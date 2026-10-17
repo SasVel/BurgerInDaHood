@@ -9,6 +9,7 @@ const FRONT = 0
 const LEFT = -1
 var direction = FRONT
 var held_item = Const.Gun
+@onready var hand_state_machine = %HandAnimTree.get("parameters/playback")
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("turn_left"):
@@ -32,6 +33,7 @@ func handleRotation(delta):
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		hand_state_machine.travel("hand_interact")
 		var mouse_pos = get_viewport().get_mouse_position()
 		var origin = camera.project_ray_origin(mouse_pos)
 		var direction = camera.project_ray_normal(mouse_pos)
