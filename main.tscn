@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bniongcqno6th" path="res://player.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://ie3ho03ygqpn" path="res://game_manager.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://gt05gwg4l8qp" path="res://Models/RegisterObjects/Desk.glb" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://bvj0uoghp02q3" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://d2f581pthg8av" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4jhg3"]
 
@@ -16,10 +16,10 @@ size = Vector3(0.278, 0.177, 0.299)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_36556"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_36556"]
-size = Vector3(0.15740967, 0.38964844, 0.34350586)
+size = Vector3(0.1940155, 0.38964844, 0.34350586)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4jhg3"]
-size = Vector3(0.157, 0.39, 0.344)
+size = Vector3(0.18597852, 0.39, 0.344)
 
 [node name="Main" type="Node3D" unique_id=1855453819]
 
@@ -56,16 +56,18 @@ script = ExtResource("2_0xm2m")
 transform = Transform3D(1, 0, 0, 0, 0.7554458, 0.65521115, 0, -0.65521115, 0.7554458, 0, 0.92794234, 0)
 
 [node name="CustomerHitbox" type="StaticBody3D" parent="." unique_id=884072015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10167116, 0.14855337)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CustomerHitbox" unique_id=1263604397]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021856785, 0.022949219, -0.5247803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00948596, 0.022949219, -0.9099499)
 shape = SubResource("BoxShape3D_36556")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CustomerHitbox" unique_id=1607121251]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00811173, 0.017054915, -0.5407655)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010768957, 0.017054915, -0.9118957)
 mesh = SubResource("BoxMesh_4jhg3")
+
 [node name="Desk" parent="." unique_id=2026969727 instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.084021, 0, 0.25881863)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.004626155, -0.3859299, -0.29103163)
 
 [node name="MeshWall" parent="." unique_id=1575055165 instance=ExtResource("4_1bvp3")]
-transform = Transform3D(0.627, 0, 0, 0, 0.508, 0, 0, 0, 0.508, 0.42790914, 0.8855839, -0.253681)
+transform = Transform3D(0.227, 0, 0, 0, 0.184, 0, 0, 0, 0.184, 0.10819015, -0.16902496, -0.35943332)

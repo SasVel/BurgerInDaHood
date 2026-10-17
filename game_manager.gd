@@ -30,11 +30,11 @@ func start_day():
 func spawn_customer(instance):
 	add_child(instance)
 	instance.scale = Vector3(0.5, 0.5, 0.5)
-	instance.position = Vector3(2, -.5, -CUSTOMER_DISTANCE)
+	instance.position = Vector3(2, -.7, -CUSTOMER_DISTANCE)
 	instance.rotation = Vector3(0, -PI, 0)
 	
 	var tween = create_tween()
-	tween.tween_property(instance,"position",Vector3(0, -0.5, -CUSTOMER_DISTANCE),2.0)
+	tween.tween_property(instance,"position",Vector3(0, -.7, -CUSTOMER_DISTANCE),2.0)
 	tween.tween_property(instance,"rotation:y",instance.rotation.y + PI/2,0.5)
 	
 func select_order_items(items_count):
