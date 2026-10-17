@@ -1420,7 +1420,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02328816, 0)
 [node name="Hand2" type="Node3D" parent="Player" unique_id=1440973040]
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.12932085, -0.4957615, -0.2183423)
 
-<<<<<<< HEAD
 [node name="Hand" type="Node3D" parent="Player/Hand2" unique_id=1432937195]
 
 [node name="GeneralSkeleton" type="Skeleton3D" parent="Player/Hand2/Hand" unique_id=107844542]
@@ -1505,7 +1504,6 @@ unique_name_in_owner = true
 root_node = NodePath("%HandAnimTree/../Hand2")
 tree_root = SubResource("AnimationNodeStateMachine_7kkhm")
 anim_player = NodePath("../Hand2/AnimationPlayer")
-=======
 [node name="Skeleton3D" parent="Player/Hand2/Hand" parent_id_path=PackedInt32Array(1626577642, 1685390009) index="0" unique_id=643689018]
 bones/0/rotation = Quaternion(0.5837583, 0.6479389, -0.2155793, -0.43923467)
 bones/1/rotation = Quaternion(0.09804709, -0.011098542, -0.19471906, 0.9758833)
@@ -1513,7 +1511,6 @@ bones/2/rotation = Quaternion(0.015925266, -0.0010598651, -0.051710673, 0.998534
 bones/3/rotation = Quaternion(0.08286458, -0.0021594702, 0.0841489, 0.99299943)
 bones/4/rotation = Quaternion(0.049985867, 3.080318e-07, -0.08081169, 0.9954753)
 bones/5/rotation = Quaternion(0.065278694, 0.017805237, 0.070151314, 0.9952389)
->>>>>>> 92122d9 (order dialog generator)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=10361441]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4655986, 0.28826904, -0.17350578)
