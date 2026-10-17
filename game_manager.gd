@@ -5,6 +5,8 @@ const ORDER_TIME = 15.0
 const CUSTOMER_DISTANCE = .7
 const DAY_TIME = 100
 @onready var player: Node3D = %Player
+@onready var order_time_progress_bar: TextureProgressBar = %OrderTimeProgressBar
+@onready var day_clock: Label = %DayClock
 @onready var reputation = MAX_REP
 var day: int = 0
 var time_left: float = 0.0
@@ -22,17 +24,26 @@ func _ready() -> void:
 	print(Const.Items)
 	player.turned_to_customer.connect(_on_player_turned_to_customer)
 	player.customer_interaction.connect(_on_customer_interaction)
+	order_time_progress_bar.max_value = ORDER_TIME
 	start_day()
 
 func _process(delta: float) -> void:
 	if not day_running:
 		return
 	time_left -= delta
+	var day_progress = 1.0 - (time_left / DAY_TIME)
+	var game_hour = lerpf(9.0, 17.0, day_progress)
+
+	var hours = int(game_hour)
+	var minutes = int((game_hour - hours) * 60)
+
+	day_clock.text = "%02d:%02d" % [hours, minutes]
 	if time_left <= 0:
 		time_left = 0
 		end_day()
 	if order_timer_running:
 		order_time_left = maxf(order_time_left - delta, 0.0)
+		order_time_progress_bar.value = order_time_left
 	if order_time_left <= 0:
 		order_failed()
 
@@ -106,8 +117,9 @@ func despawn_customer():
 	tween.tween_property(current_customer,"rotation:y",current_customer.rotation.y - PI/2,0.5)
 	tween.tween_property(current_customer,"position",Vector3(-2, -.7, -CUSTOMER_DISTANCE),2.0)
 	await tween.finished
-	current_customer.queue_free()
-	current_customer = null
+	if not current_customer == null:
+		current_customer.queue_free()
+		current_customer = null
 
 func select_order_items(items_count):
 	var available_items = Const.Items.keys().duplicate()
