@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cjrcd0pgrpsoi"]
+
+[ext_resource type="Script" uid="uid://tmi4lne4q4ah" path="res://GlobalScripts/Resurces.gd" id="1_k804w"]
+[ext_resource type="PackedScene" uid="uid://c8ujtpitxyg67" path="res://Models/Customers/Man_01/Man_01.glb" id="2_vypnc"]
+[ext_resource type="PackedScene" uid="uid://dgg2qvbr484ab" path="res://Models/Customers/Man_02/Man_02.glb" id="3_mxjrh"]
+[ext_resource type="PackedScene" uid="uid://dli43vsesf45g" path="res://Models/Customers/Man_03/Man_03.glb" id="4_yk4pt"]
+[ext_resource type="PackedScene" uid="uid://dywqxtwc3s5o1" path="res://Models/Customers/Man_04/Man_04.glb" id="5_ypvbf"]
+[ext_resource type="PackedScene" uid="uid://dpuou47inrykx" path="res://Models/Customers/Man_05/Man_05.glb" id="6_vs06q"]
+
+[node name="Resources" type="Node" unique_id=595782671]
+script = ExtResource("1_k804w")
+customers = Array[PackedScene]([ExtResource("2_vypnc"), ExtResource("3_mxjrh"), ExtResource("4_yk4pt"), ExtResource("5_ypvbf"), ExtResource("6_vs06q")])
