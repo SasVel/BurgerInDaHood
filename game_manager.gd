@@ -1,6 +1,5 @@
 extends Node3D
 
-const ORDER_ITEMS = ["coke", "burger"]
 const MAX_REP = 100
 const CUSTOMER_DISTANCE = .7
 const DAY_TIME = 100
@@ -13,10 +12,12 @@ var day_running: bool = false
 var customer_ready: bool = false
 var current_customer: Node3D = null
 var current_order: Array = []
+var is_evil: bool = false
+var has_pulled_gun: bool = false
 
-func _on_customer_interaction():
-	complete_customer_order()
 func _ready() -> void:
+	print(Const.Items)
+	player.turned_to_customer.connect(_on_player_turned_to_customer)
 	player.customer_interaction.connect(_on_customer_interaction)
 	start_day()
 
@@ -27,6 +28,33 @@ func _process(delta: float) -> void:
 	if time_left <= 0:
 		time_left = 0
 		end_day()
+
+func _on_customer_interaction():
+	if not has_pulled_gun:
+		complete_customer_order()
+	#TODO
+
+func _on_player_turned_to_customer():
+	if not day_running or not customer_ready:
+		return
+
+	if not is_instance_valid(current_customer):
+		return
+
+	if not is_evil:
+		return
+
+	if has_pulled_gun:
+		return
+
+	var reputation_percent = float(reputation) / MAX_REP
+	var gun_chance = max(1-reputation_percent,.05)
+	if randf() < gun_chance:
+		pull_gun()
+
+func pull_gun():
+	has_pulled_gun = true
+	print("customer pulled a gun")
 
 func start_day() -> void:
 	day += 1
@@ -41,6 +69,14 @@ func spawn_next_customer() -> void:
 	if not day_running or is_instance_valid(current_customer):
 		return
 
+	var reputation_percent = float(reputation) / MAX_REP
+	var evil_chance = max(1-reputation_percent,.25)
+	if randf() < evil_chance:
+		is_evil = true
+		print("is evil")
+	else:
+		is_evil = false
+	
 	var customer = Res.customers.pick_random()
 	var instance = customer.instantiate()
 
@@ -74,9 +110,9 @@ func despawn_customer():
 	await tween.finished
 	
 func select_order_items(items_count):
-	var available_items = ORDER_ITEMS.duplicate()
+	var available_items = Const.Items.keys().duplicate()
 	var chosen_items = []
-	for i in range(min(items_count, ORDER_ITEMS.size())):
+	for i in range(min(items_count, Const.Items.keys().size())):
 		var item = available_items.pick_random()
 		chosen_items.append(item)
 		available_items.erase(item)
@@ -88,10 +124,11 @@ func complete_customer_order() -> void:
 		return
 
 	print("Order completed!")
+	customer_ready = false
 	await despawn_customer()
 	current_customer.queue_free()
 	current_customer = null
-	customer_ready = false
+	print("Customer despawned")
 
 	spawn_next_customer()
 

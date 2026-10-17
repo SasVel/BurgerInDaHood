@@ -1,6 +1,7 @@
 extends Node3D
 
 signal customer_interaction
+signal turned_to_customer
 
 @onready var camera = $Camera3D
 @export var turn_speed = 10
@@ -13,6 +14,7 @@ func _physics_process(delta: float) -> void:
 		direction=max(direction-1, LEFT)
 	if Input.is_action_just_pressed("turn_right"):
 		direction=min(direction+1, FRONT)
+		turned_to_customer.emit()
 	
 	handleRotation(delta)
 
