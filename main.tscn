@@ -2,12 +2,28 @@
 
 [ext_resource type="Script" uid="uid://bniongcqno6th" path="res://player.gd" id="1_ig7tw"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_36556"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4jhg3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_36556"]
 size = Vector3(0.27819824, 0.17669678, 0.2991333)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mm557"]
+size = Vector3(0.278, 0.177, 0.299)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_36556"]
+
 [node name="Main" type="Node3D" unique_id=1855453819]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1226423632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36090088, 0.14413452, -0.99485874)
+physics_material_override = SubResource("PhysicsMaterial_4jhg3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1850145114]
+mesh = SubResource("BoxMesh_36556")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1098943048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0014449358)
+shape = SubResource("BoxShape3D_mm557")
 
 [node name="Player" type="Node3D" parent="." unique_id=1370602290]
 script = ExtResource("1_ig7tw")
@@ -17,10 +33,6 @@ script = ExtResource("1_ig7tw")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=60254887]
 transform = Transform3D(0.02575937, -0.019552428, -0.03813342, 0.030229956, 0.039826494, 0, 0.030374408, -0.023055432, 0.03233949, 0.074454695, -0.027244464, -0.16087875)
 mesh = SubResource("CapsuleMesh_36556")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1850145114]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36090088, 0.14413452, -0.99485874)
-mesh = SubResource("BoxMesh_36556")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=10361441]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4655986, 0.28826904, -0.17350578)
