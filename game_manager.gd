@@ -4,13 +4,20 @@ extends Node3D
 @onready var helper_functions = %HelperFunctions
 
 const MAX_REP = 100
-const ORDER_TIME = 15.0
-const CUSTOMER_DISTANCE = .7
-const DAY_TIME = 100
+const ORDER_TIME = 60.0
+const CUSTOMER_DISTANCE = .56
+const DAY_TIME = 240
 @onready var player: Node3D = %Player
 @onready var order_time_progress_bar: TextureProgressBar = %OrderTimeProgressBar
 @onready var day_clock: Label = %DayClock
-@onready var reputation = MAX_REP
+@onready var reputation = MAX_REP :
+	set(val):
+		reputation = clamp(val, 0, MAX_REP)
+		if reputation == 0:
+			no_rep_reached.emit()
+		elif reputation == MAX_REP:
+			max_rep_reached.emit()
+
 var day: int = 0
 var time_left: float = 0.0
 
@@ -24,10 +31,14 @@ var customer_ready: bool = false :
 		customer_ready = val
 var current_customer: Node3D = null
 var current_order: Array = []
+var order_info_arr : Array
 var is_evil: bool = false
 var has_pulled_gun: bool = false
 var order_time_left: float = 0.0
 var order_timer_running: bool = false
+
+signal max_rep_reached
+signal no_rep_reached
 
 func _ready() -> void:
 	print(Const.Items)
@@ -36,7 +47,7 @@ func _ready() -> void:
 	order_time_progress_bar.max_value = ORDER_TIME
 	start_day()
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if not day_running:
 		return
 	time_left -= delta
@@ -59,10 +70,10 @@ func _process(delta: float) -> void:
 func _on_customer_interaction(item):
 	if item == null:
 		return
-	if item == Const.Gun:
+	if item.is_gun:
 		kill_customer()
 	elif not has_pulled_gun:
-		complete_customer_order()
+		progress_customer_order(item)
 	#TODO
 
 func _on_player_turned_to_customer():
@@ -103,6 +114,7 @@ func spawn_next_customer() -> void:
 	var customer = Res.customers.pick_random()
 	var instance = customer.instantiate()
 	current_customer = instance
+	order_info_arr.clear()
 	current_order = select_order_items(2)
 	customer_ready = false
 	add_child(current_customer)
@@ -131,19 +143,39 @@ func despawn_customer():
 		current_customer = null
 
 func select_order_items(items_count):
-	var available_items = Const.Items.keys().duplicate()
+	var available_items = Const.Items.values().duplicate()
 	var chosen_items = []
 	for i in range(min(items_count, Const.Items.keys().size())):
 		var item = available_items.pick_random()
-		chosen_items.append(item)
+		chosen_items.append(item as Const.Items)
 		available_items.erase(item)
 	chosen_items.shuffle()
 	return chosen_items
 	
+func progress_customer_order(item : Item):
+	var all_orders_of_type = order_info_arr[1].filter(func(x): return x.type == item.type)
+	if current_order.has(item.type):
+		current_order.pop_at(current_order.find(item.type))
+		var filtered_orders = all_orders_of_type.filter(func(x): return x.completion == Const.OrderCompletions.Neutral)
+		if filtered_orders.size() > 0:
+			filtered_orders[0].completion = Const.OrderCompletions.Good
+	else:
+		var filtered_orders = order_info_arr[1].filter(func(x): return x.completion == Const.OrderCompletions.Neutral)
+		if filtered_orders.size() > 0:
+			filtered_orders[0].completion = Const.OrderCompletions.Bad
+
+	update_customer_dialogue(order_info_arr)
+	if order_info_arr[1].all(func(x): return x.completion == Const.OrderCompletions.Bad):
+		order_failed()
+		return
+
+	if current_order.size() <= 0:
+		complete_customer_order()
+
 func complete_customer_order() -> void:
 	if not is_instance_valid(current_customer) or not customer_ready:
 		return
-	reputation = min(reputation + 2, MAX_REP)
+	reputation = reputation + 2
 	await despawn_customer()
 	spawn_next_customer()
 
@@ -151,11 +183,11 @@ func kill_customer() -> void:
 	if not is_instance_valid(current_customer) or not customer_ready:
 		return
 	if is_evil and has_pulled_gun:
-		reputation = min(reputation+2, MAX_REP)
+		reputation = reputation+2
 	elif is_evil:
-		reputation = max(reputation-10, 0)
+		reputation = reputation-10
 	else:
-		reputation = max(reputation-20, 0)
+		reputation = reputation-20
 	customer_ready = false
 	var tween = create_tween()
 	tween.tween_property(current_customer,"rotation:z",current_customer.rotation.z + PI/2,0.5)
@@ -175,15 +207,20 @@ func order_failed():
 	if not customer_ready:
 		return
 	order_timer_running = false
-	customer_ready = false
-	reputation = max(reputation - 10, 0)
+	reputation = reputation - 10
 	await despawn_customer()
+	customer_ready = false
 	print("order failed")
 	spawn_next_customer()
 
 func show_customer_dialogue():
-	customer_dialogue_box.fill_text(helper_functions.gen_order_dialog(current_order))
-	customer_dialogue_box.visible = true
+	order_info_arr = helper_functions.gen_order_dialog(current_order)
+	update_customer_dialogue(order_info_arr)
+	customer_dialogue_box.fade_in()
+
+func update_customer_dialogue(gen_arr):
+	customer_dialogue_box.fill_text(gen_arr)
 
 func hide_customer_dialogue():
-	customer_dialogue_box.visible = false
+	customer_dialogue_box.fade_out()
+	customer_dialogue_box.clear_text()
