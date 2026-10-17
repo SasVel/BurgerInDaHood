@@ -3,9 +3,9 @@
 [ext_resource type="Shader" uid="uid://ckwbhanwq2lmv" path="res://Shaders/CRT.gdshader" id="1_272bh"]
 [ext_resource type="Script" uid="uid://bniongcqno6th" path="res://player.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://ie3ho03ygqpn" path="res://game_manager.gd" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://be42ib66lpq7b" path="res://Models/Shared/Hand.glb" id="3_4c57u"]
+[ext_resource type="PackedScene" uid="uid://bbrui37ftrbvv" path="res://Models/Shared/Hand.glb" id="3_4c57u"]
 [ext_resource type="PackedScene" uid="uid://gt05gwg4l8qp" path="res://Models/RegisterObjects/Desk.glb" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://bvj0uoghp02q3" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://d2f581pthg8av" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cmxsncmxh5lx" path="res://Models/RegisterObjects/MP5.glb" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cmjhodjp1jegd" path="res://Models/RegisterObjects/RegisterScnBG.glb" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://b4v5xwphf8sxe" path="res://Models/RegisterObjects/CashRegister.glb" id="8_5vw27"]
@@ -91,7 +91,7 @@ script = ExtResource("1_ig7tw")
 [node name="Hand2" parent="Player" unique_id=1626577642 instance=ExtResource("3_4c57u")]
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -0.034617044, -0.47467643, -0.10644102)
 
-[node name="Skeleton3D" parent="Player/Hand2/Hand" parent_id_path=PackedInt32Array(1626577642, 425062475) index="0" unique_id=1893356305]
+[node name="Skeleton3D" parent="Player/Hand2/Hand" parent_id_path=PackedInt32Array(1626577642, 1366408376) index="0" unique_id=485228342]
 bones/0/rotation = Quaternion(0.5837583, 0.6479389, -0.2155793, -0.43923467)
 bones/1/rotation = Quaternion(0.09804709, -0.011098542, -0.19471906, 0.9758833)
 bones/2/rotation = Quaternion(0.015925266, -0.0010598651, -0.051710673, 0.9985346)

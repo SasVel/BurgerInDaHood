@@ -1,6 +1,6 @@
 extends Node3D
 
-signal customer_interaction
+signal customer_interaction(item)
 signal turned_to_customer
 
 @onready var camera = $Camera3D
@@ -8,6 +8,7 @@ signal turned_to_customer
 const FRONT = 0
 const LEFT = -1
 var direction = FRONT
+var held_item = Const.Gun
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("turn_left"):
@@ -42,6 +43,6 @@ func _input(event):
 			var object = result.collider
 			print("You clicked on: ", object.name)
 			if object.name == "CustomerHitbox":
-				customer_interaction.emit()
+				customer_interaction.emit(held_item)
 		else:
 			print("You clicked on nothing")

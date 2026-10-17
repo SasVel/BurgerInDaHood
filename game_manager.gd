@@ -29,8 +29,12 @@ func _process(delta: float) -> void:
 		time_left = 0
 		end_day()
 
-func _on_customer_interaction():
-	if not has_pulled_gun:
+func _on_customer_interaction(item):
+	if item == null:
+		return
+	if item == Const.Gun:
+		kill_customer()
+	elif not has_pulled_gun:
 		complete_customer_order()
 	#TODO
 
@@ -132,6 +136,33 @@ func complete_customer_order() -> void:
 
 	spawn_next_customer()
 
+func kill_customer() -> void:
+	if not is_instance_valid(current_customer) or not customer_ready:
+		return
+	customer_ready = false
+
+	var tween = create_tween()
+
+	# Fall sideways by rotating 90 degrees
+	tween.tween_property(current_customer,"rotation:z",current_customer.rotation.z + deg_to_rad(90),0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+
+	# Wait briefly, then disappear
+	tween.tween_interval(0.5)
+
+	# Fade out by scaling down
+	tween.tween_property(
+		current_customer,
+		"scale",
+		Vector3.ZERO,
+		0.3
+	)
+
+	await tween.finished
+	current_customer.queue_free()
+	current_customer = null
+	if day_running:
+		spawn_next_customer()
+	print("kill customer")
 
 func end_day() -> void:
 	day_running = false

@@ -1,5 +1,7 @@
 extends Node
 
+const Gun = -1
+
 enum Items {
 	CheeseBurger,
 	HamBurger,
