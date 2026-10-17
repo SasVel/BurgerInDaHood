@@ -8,7 +8,7 @@ signal turned_to_customer
 const FRONT = 0
 const LEFT = -1
 var direction = FRONT
-var held_item = Const.Gun
+var held_item : Item
 @onready var hand_state_machine = %HandAnimTree.get("parameters/playback")
 
 func _physics_process(delta: float) -> void:
@@ -44,7 +44,13 @@ func _input(event):
 		if result:
 			var object = result.collider
 			print("You clicked on: ", object.name)
-			if object.name == "CustomerHitbox":
-				customer_interaction.emit(held_item)
+			if object is Item:
+				held_item = object
+				held_item.pick_up(%HandMarker)
+				print("You clicked on an item!")
+			elif object is CustomerHitbox:
+				if held_item == null: return
+				held_item.tween_activate()
+				customer_interaction.emit(-1 if held_item.is_gun else held_item.type)
 		else:
 			print("You clicked on nothing")
