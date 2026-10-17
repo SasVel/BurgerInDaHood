@@ -18,11 +18,16 @@ config/icon="res://icon.svg"
 [autoload]
 
 Res="*uid://cjrcd0pgrpsoi"
+Const="*uid://dmj80cfto782y"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_vim/plugin.cfg")
 
 [input]
 
