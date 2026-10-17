@@ -3,12 +3,16 @@ extends Node3D
 const ORDER_ITEMS = ["coke", "burger"]
 const MAX_REP = 100
 const CUSTOMER_DISTANCE = .7
-
+@onready var player: Node3D = %Player
 @onready var reputation = MAX_REP
 @onready var day = 0
 @onready var time = 0
+	
 
+func _on_customer_interaction():
+	print("customer interaction!")
 func _ready() -> void:
+	player.customer_interaction.connect(_on_customer_interaction)
 	start_day()
 
 func _process(delta: float) -> void:

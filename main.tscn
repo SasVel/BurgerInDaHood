@@ -13,6 +13,12 @@ size = Vector3(0.278, 0.177, 0.299)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_36556"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_36556"]
+size = Vector3(0.15740967, 0.38964844, 0.34350586)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4jhg3"]
+size = Vector3(0.157, 0.39, 0.344)
+
 [node name="Main" type="Node3D" unique_id=1855453819]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1226423632]
@@ -27,6 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0014449358)
 shape = SubResource("BoxShape3D_mm557")
 
 [node name="Player" type="Node3D" parent="." unique_id=1370602290]
+unique_name_in_owner = true
 script = ExtResource("1_ig7tw")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=2073357693]
@@ -40,7 +47,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4655986, 0.28826904, -0.17
 mesh = SubResource("BoxMesh_36556")
 
 [node name="GameManager" type="Node3D" parent="." unique_id=2116898195]
+unique_name_in_owner = true
 script = ExtResource("2_0xm2m")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1199503585]
 transform = Transform3D(1, 0, 0, 0, 0.7554458, 0.65521115, 0, -0.65521115, 0.7554458, 0, 0.92794234, 0)
+
+[node name="CustomerHitbox" type="StaticBody3D" parent="." unique_id=884072015]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CustomerHitbox" unique_id=1263604397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021856785, 0.022949219, -0.5247803)
+shape = SubResource("BoxShape3D_36556")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CustomerHitbox" unique_id=1607121251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00811173, 0.017054915, -0.5407655)
+mesh = SubResource("BoxMesh_4jhg3")

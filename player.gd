@@ -1,12 +1,9 @@
 extends Node3D
 
+signal customer_interaction
+
 @onready var camera = $Camera3D
 @export var turn_speed = 10
-@export var products = {
-	"name": "Knight",
-	"health": 100,
-	"speed": 5.0
-}
 const FRONT = 0
 const LEFT = -1
 var direction = FRONT
@@ -42,5 +39,7 @@ func _input(event):
 		if result:
 			var object = result.collider
 			print("You clicked on: ", object.name)
+			if object.name == "CustomerHitbox":
+				customer_interaction.emit()
 		else:
 			print("You clicked on nothing")
