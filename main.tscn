@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dfp4c5dlh8x6k"]
 
 [ext_resource type="Script" uid="uid://bniongcqno6th" path="res://player.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://ie3ho03ygqpn" path="res://game_manager.gd" id="2_0xm2m"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4jhg3"]
 
@@ -37,3 +38,6 @@ mesh = SubResource("CapsuleMesh_36556")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=10361441]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4655986, 0.28826904, -0.17350578)
 mesh = SubResource("BoxMesh_36556")
+
+[node name="GameManager" type="Node3D" parent="." unique_id=2116898195]
+script = ExtResource("2_0xm2m")
