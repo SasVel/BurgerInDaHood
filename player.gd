@@ -11,5 +11,13 @@ func _process(delta):
 		direction=max(direction-1, LEFT)
 	if Input.is_action_just_pressed("turn_right"):
 		direction=min(direction+1, FRONT)
-	camera.rotation.y = lerp_angle(camera.rotation.y, direction * -PI / 2, turn_speed * delta)
+	var target_angle = direction * -PI / 2
+	var difference = target_angle - rotation.y
+	
+	if abs(difference) < 0.01 || (direction == LEFT && difference < 0) || (direction == FRONT && difference > 0):
+		rotation.y = target_angle
+	elif difference > 0:
+		rotation.y += turn_speed * delta
+	else:
+		rotation.y -= turn_speed * delta
 	
