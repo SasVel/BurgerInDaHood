@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 Res="*uid://cjrcd0pgrpsoi"
 Const="*uid://dmj80cfto782y"
+GameState="*uid://bi5pt1khwgwcj"
+SceneTransition="*uid://drofhe71ydym1"
 
 [dialogue_manager]
 
@@ -34,7 +36,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_vim/plugin.cfg")
+enabled=PackedStringArray()
 
 [gui]
 

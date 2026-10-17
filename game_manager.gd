@@ -6,12 +6,16 @@ extends Node3D
 const MAX_REP = 100
 const ORDER_TIME = 15.0
 const CUSTOMER_DISTANCE = .7
-const DAY_TIME = 100
+const DAY_TIME = 10
+
 @onready var player: Node3D = %Player
 @onready var order_time_progress_bar: TextureProgressBar = %OrderTimeProgressBar
 @onready var day_clock: Label = %DayClock
-@onready var reputation = MAX_REP
-var day: int = 0
+
+@onready var reputation = GameState.reputation
+@onready var day: int = GameState.day
+@onready var profits: float = GameState.profits
+
 var time_left: float = 0.0
 
 var day_running: bool = false
@@ -144,6 +148,7 @@ func complete_customer_order() -> void:
 	if not is_instance_valid(current_customer) or not customer_ready:
 		return
 	reputation = min(reputation + 2, MAX_REP)
+	profits += 10
 	await despawn_customer()
 	spawn_next_customer()
 
@@ -170,6 +175,8 @@ func end_day() -> void:
 	await despawn_customer()
 	print("Day ", day, " ended!")
 	print("Reputation: ", reputation)
+	await save_game_state()
+	SceneTransition.change_scene("res://BetweenDays.tscn")
 
 func order_failed():
 	if not customer_ready:
@@ -187,3 +194,8 @@ func show_customer_dialogue():
 
 func hide_customer_dialogue():
 	customer_dialogue_box.visible = false
+
+func save_game_state():
+	GameState.day = day
+	GameState.reputation = reputation
+	GameState.profits = profits
