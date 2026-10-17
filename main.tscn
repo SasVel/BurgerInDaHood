@@ -7,13 +7,9 @@
 [ext_resource type="Theme" uid="uid://bsk1fyhloxt7b" path="res://Components/main_theme.tres" id="2_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://hlth0vgggdbi" path="res://Models/Shared/Hand_Character_02.png" id="3_dg77c"]
 [ext_resource type="PackedScene" uid="uid://gt05gwg4l8qp" path="res://Models/RegisterObjects/Desk.glb" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://d2f581pthg8av" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://dmbvwt2ig648k" path="res://UI/customer_dialogue_box.gd" id="3_yaehf"]
 [ext_resource type="PackedScene" uid="uid://bvj0uoghp02q3" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
 [ext_resource type="Animation" uid="uid://bkh5ptus0lv6j" path="res://Models/Shared/HandAnimations/hand_idle.anim" id="4_dg77c"]
-[ext_resource type="PackedScene" uid="uid://bbrui37ftrbvv" path="res://Models/Shared/Hand.glb" id="3_4c57u"]
-[ext_resource type="PackedScene" uid="uid://gt05gwg4l8qp" path="res://Models/RegisterObjects/Desk.glb" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://dxrxgtdja08bv" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://cftidvm2gvh4r" path="res://helper_functions.gd" id="5_efxa6"]
 [ext_resource type="PackedScene" uid="uid://cmxsncmxh5lx" path="res://Models/RegisterObjects/MP5.glb" id="5_lquwl"]
 [ext_resource type="Animation" uid="uid://cbsefsn73xu4i" path="res://Models/Shared/HandAnimations/hand_interact.anim" id="5_ycdy4"]
@@ -40,6 +36,34 @@ corner_radius_bottom_left = 5
 [sub_resource type="LabelSettings" id="LabelSettings_7kkhm"]
 font_size = 23
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_vivmo"]
+offsets = PackedFloat32Array(0.6233766, 0.6363636)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w48qg"]
+gradient = SubResource("Gradient_vivmo")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_w48qg"]
+offsets = PackedFloat32Array(0.52597404, 0.53246754)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_36556"]
+gradient = SubResource("Gradient_w48qg")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w48qg"]
+font_size = 32
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
 shader = ExtResource("1_272bh")
@@ -1382,34 +1406,6 @@ size = Vector3(0.1940155, 0.38964844, 0.34350586)
 radius = 0.04248047
 height = 0.34791565
 
-[sub_resource type="Gradient" id="Gradient_vivmo"]
-offsets = PackedFloat32Array(0.6233766, 0.6363636)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_w48qg"]
-gradient = SubResource("Gradient_vivmo")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0, 0)
-
-[sub_resource type="Gradient" id="Gradient_w48qg"]
-offsets = PackedFloat32Array(0.52597404, 0.53246754)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_36556"]
-gradient = SubResource("Gradient_w48qg")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="LabelSettings" id="LabelSettings_w48qg"]
-font_size = 32
-outline_size = 3
-outline_color = Color(0, 0, 0, 1)
-
 [node name="Main" type="Node3D" unique_id=1855453819]
 script = ExtResource("1_2cqfq")
 
@@ -1479,6 +1475,34 @@ label_settings = SubResource("LabelSettings_7kkhm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="OrderTimeProgressBar" type="TextureProgressBar" parent="UI/MainControl" unique_id=1970548954]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -277.0
+offset_top = 98.0
+offset_right = -149.0
+offset_bottom = 226.0
+grow_horizontal = 0
+value = 100.0
+fill_mode = 4
+texture_under = SubResource("GradientTexture2D_w48qg")
+texture_progress = SubResource("GradientTexture2D_36556")
+
+[node name="DayClock" type="Label" parent="UI/MainControl" unique_id=57701889]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 888.0
+offset_top = 36.0
+offset_right = 987.0
+offset_bottom = 81.0
+text = "13:45"
+label_settings = SubResource("LabelSettings_w48qg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Shaders" type="CanvasLayer" parent="." unique_id=617022070]
 layer = 2
 
@@ -1542,16 +1566,14 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(0.059585154, 0.9981355, -0.0132314265, 0.951745, -0.052808285, 0.30231225, 0.3010499, -0.030606255, -0.95311713, -0.4740218, 0.80381286, 0.30589914)
 bones/0/enabled = true
 bones/0/position = Vector3(-0.4740218, 0.80381286, 0.30589914)
-bones/0/rotation = Quaternion(0.7500541, 0.4363636, 0.32991305, -0.37170297)
-bones/0/rotation = Quaternion(0.7391517, 0.44707084, 0.32214046, -0.38730857)
+bones/0/rotation = Quaternion(0.75958014, 0.4264642, 0.3367994, -0.35739684)
 bones/0/scale = Vector3(1, 0.99999994, 1)
 bones/1/name = "mixamorig_RightForeArm"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0.97153914, 0.2368427, -0.0041671097, -0.23687929, 0.97138906, -0.017092636, -3.5762787e-07, 0.017593268, 0.9998453, -1.1923711e-07, 0.25746587, 4.1770454e-09)
 bones/1/enabled = true
 bones/1/position = Vector3(-1.1923711e-07, 0.25746587, 4.1770454e-09)
-bones/1/rotation = Quaternion(0.492018, -0.051346444, -0.086355604, 0.86476856)
-bones/1/rotation = Quaternion(0.45209518, -0.05127204, -0.07807655, 0.88706553)
+bones/1/rotation = Quaternion(0.5271651, -0.051318344, -0.09367352, 0.8430236)
 bones/1/scale = Vector3(1, 1.0000004, 1)
 bones/2/name = "mixamorig_RightHand"
 bones/2/parent = 1
@@ -1606,13 +1628,6 @@ unique_name_in_owner = true
 root_node = NodePath("%HandAnimTree/../Hand2")
 tree_root = SubResource("AnimationNodeStateMachine_7kkhm")
 anim_player = NodePath("../Hand2/AnimationPlayer")
-[node name="Skeleton3D" parent="Player/Hand2/Hand" parent_id_path=PackedInt32Array(1626577642, 1685390009) index="0" unique_id=643689018]
-bones/0/rotation = Quaternion(0.5837583, 0.6479389, -0.2155793, -0.43923467)
-bones/1/rotation = Quaternion(0.09804709, -0.011098542, -0.19471906, 0.9758833)
-bones/2/rotation = Quaternion(0.015925266, -0.0010598651, -0.051710673, 0.9985346)
-bones/3/rotation = Quaternion(0.08286458, -0.0021594702, 0.0841489, 0.99299943)
-bones/4/rotation = Quaternion(0.049985867, 3.080318e-07, -0.08081169, 0.9954753)
-bones/5/rotation = Quaternion(0.065278694, 0.017805237, 0.070151314, 0.9952389)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=10361441]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4655986, 0.28826904, -0.17350578)
@@ -1671,33 +1686,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="OrderTimeProgressBar" type="TextureProgressBar" parent="Control" unique_id=1558285084]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -277.0
-offset_top = 98.0
-offset_right = -149.0
-offset_bottom = 226.0
-grow_horizontal = 0
-value = 100.0
-fill_mode = 4
-texture_under = SubResource("GradientTexture2D_w48qg")
-texture_progress = SubResource("GradientTexture2D_36556")
-
-[node name="DayClock" type="Label" parent="Control" unique_id=614325894]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 888.0
-offset_top = 36.0
-offset_right = 987.0
-offset_bottom = 81.0
-text = "13:45"
-label_settings = SubResource("LabelSettings_w48qg")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [editable path="Item"]
