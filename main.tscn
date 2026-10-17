@@ -117,22 +117,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02328816, 0)
 unique_name_in_owner = true
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.07667221, -0.49318963, -0.18961546)
 
-[node name="Skeleton3D" parent="Player/Hand/Hand" parent_id_path=PackedInt32Array(1626577642, 425062475) index="0" unique_id=1893356305]
-bones/0/rotation = Quaternion(0.73252934, 0.45327878, 0.31747067, -0.39642337)
-bones/1/rotation = Quaternion(0.42805955, -0.051176086, -0.07310804, 0.8993337)
+[node name="Skeleton3D" parent="Player/Hand/Hand" parent_id_path=PackedInt32Array(1626577642, 1366408376) index="0" unique_id=485228342]
+bones/0/rotation = Quaternion(0.7062422, 0.47598937, 0.2992721, -0.43022358)
+bones/1/rotation = Quaternion(0.33488354, -0.05047081, -0.053950682, 0.93935883)
 bones/2/rotation = Quaternion(-0.15387824, -0.2336028, -0.012816488, 0.95999324)
 bones/3/rotation = Quaternion(0.22203743, -0.038510196, 0.09996097, 0.9691358)
 bones/4/rotation = Quaternion(0.08381848, -0.07508006, -0.009388565, 0.9936042)
 bones/5/rotation = Quaternion(0.27638406, 0.008336631, 0.08917818, 0.9568645)
 
-[node name="Skeleton3D" parent="Player/Hand2/Hand" parent_id_path=PackedInt32Array(1626577642, 1366408376) index="0" unique_id=485228342]
-bones/0/rotation = Quaternion(0.5837583, 0.6479389, -0.2155793, -0.43923467)
-bones/1/rotation = Quaternion(0.09804709, -0.011098542, -0.19471906, 0.9758833)
-bones/2/rotation = Quaternion(0.015925266, -0.0010598651, -0.051710673, 0.9985346)
-bones/3/rotation = Quaternion(0.08286458, -0.0021594702, 0.0841489, 0.99299943)
-bones/4/rotation = Quaternion(0.049985867, 3.080318e-07, -0.08081169, 0.9954753)
-bones/5/rotation = Quaternion(0.065278694, 0.017805237, 0.070151314, 0.9952389)
-[node name="AnimationPlayer" parent="Player/Hand" index="1" unique_id=1464097723]
+[node name="AnimationPlayer" parent="Player/Hand" index="1" unique_id=906188700]
 autoplay = &"hand_idle"
 
 [node name="HandAnimTree" type="AnimationTree" parent="Player" unique_id=1597549401]
