@@ -44,7 +44,7 @@ func _input(event):
 		if result:
 			var object = result.collider
 			print("You clicked on: ", object.name)
-			if object is Item:
+			if object is Item and object != held_item:
 				held_item = object
 				held_item.pick_up(%HandMarker)
 				print("You clicked on an item!")

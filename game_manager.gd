@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var customer_dialogue_box : Control
+
 const MAX_REP = 100
 const ORDER_TIME = 15.0
 const CUSTOMER_DISTANCE = .7
@@ -12,7 +14,13 @@ var day: int = 0
 var time_left: float = 0.0
 
 var day_running: bool = false
-var customer_ready: bool = false
+var customer_ready: bool = false :
+	set(val):
+		if val:
+			show_customer_dialogue()
+		else:
+			hide_customer_dialogue()
+		customer_ready = val
 var current_customer: Node3D = null
 var current_order: Array = []
 var is_evil: bool = false
@@ -171,3 +179,9 @@ func order_failed():
 	await despawn_customer()
 	print("order failed")
 	spawn_next_customer()
+
+func show_customer_dialogue():
+	customer_dialogue_box.visible = true
+
+func hide_customer_dialogue():
+	customer_dialogue_box.visible = false

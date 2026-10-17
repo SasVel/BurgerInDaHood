@@ -1,11 +1,15 @@
 [gd_scene format=4 uid="uid://dfp4c5dlh8x6k"]
 
+[ext_resource type="Script" uid="uid://b7nih8iefrxq5" path="res://main.gd" id="1_2cqfq"]
 [ext_resource type="Shader" uid="uid://ckwbhanwq2lmv" path="res://Shaders/CRT.gdshader" id="1_272bh"]
 [ext_resource type="Script" uid="uid://bniongcqno6th" path="res://player.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://ie3ho03ygqpn" path="res://game_manager.gd" id="2_0xm2m"]
+[ext_resource type="Theme" uid="uid://bsk1fyhloxt7b" path="res://Components/main_theme.tres" id="2_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://hlth0vgggdbi" path="res://Models/Shared/Hand_Character_02.png" id="3_dg77c"]
 [ext_resource type="PackedScene" uid="uid://gt05gwg4l8qp" path="res://Models/RegisterObjects/Desk.glb" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://d2f581pthg8av" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://dmbvwt2ig648k" path="res://UI/customer_dialogue_box.gd" id="3_yaehf"]
+[ext_resource type="PackedScene" uid="uid://bvj0uoghp02q3" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
 [ext_resource type="Animation" uid="uid://bkh5ptus0lv6j" path="res://Models/Shared/HandAnimations/hand_idle.anim" id="4_dg77c"]
 [ext_resource type="PackedScene" uid="uid://bbrui37ftrbvv" path="res://Models/Shared/Hand.glb" id="3_4c57u"]
 [ext_resource type="PackedScene" uid="uid://gt05gwg4l8qp" path="res://Models/RegisterObjects/Desk.glb" id="3_h2yge"]
@@ -25,6 +29,17 @@ adjustment_enabled = true
 adjustment_brightness = 1.1
 adjustment_contrast = 1.3
 adjustment_saturation = 1.1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kkhm"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_7kkhm"]
+font_size = 23
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
 shader = ExtResource("1_272bh")
@@ -1396,11 +1411,76 @@ outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node3D" unique_id=1855453819]
+script = ExtResource("1_2cqfq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1972210199]
 environment = SubResource("Environment_7kkhm")
 
+[node name="UI" type="CanvasLayer" parent="." unique_id=1784491341]
+
+[node name="MainControl" type="Control" parent="UI" unique_id=610036546]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_2cqfq")
+
+[node name="CustomerDialogueBox" type="Control" parent="UI/MainControl" unique_id=730675883]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 183.0
+grow_horizontal = 2
+mouse_filter = 2
+script = ExtResource("3_yaehf")
+
+[node name="Panel" type="Panel" parent="UI/MainControl/CustomerDialogueBox" unique_id=421409604]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 17.5
+offset_right = 40.0
+offset_bottom = 97.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_7kkhm")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/MainControl/CustomerDialogueBox" unique_id=1014810463]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -548.0
+offset_top = -74.0
+offset_right = 548.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MainControl/CustomerDialogueBox/PanelContainer" unique_id=1335197183]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/MainControl/CustomerDialogueBox/PanelContainer/MarginContainer" unique_id=1556749675]
+layout_mode = 2
+size_flags_vertical = 1
+text = "BlaBlaBlaBla"
+label_settings = SubResource("LabelSettings_7kkhm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Shaders" type="CanvasLayer" parent="." unique_id=617022070]
+layer = 2
 
 [node name="Control" type="Control" parent="Shaders" unique_id=1256580436]
 layout_mode = 3
@@ -1409,6 +1489,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="Vignette" type="ColorRect" parent="Shaders/Control" unique_id=1937809352]
 material = SubResource("ShaderMaterial_5vw27")
@@ -1418,6 +1499,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="CRT" type="ColorRect" parent="Shaders/Control" unique_id=2037254379]
 material = SubResource("ShaderMaterial_5vw27")
@@ -1427,6 +1509,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1226423632]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36090088, 0.14413452, -0.99485874)
@@ -1460,6 +1543,7 @@ bones/0/rest = Transform3D(0.059585154, 0.9981355, -0.0132314265, 0.951745, -0.0
 bones/0/enabled = true
 bones/0/position = Vector3(-0.4740218, 0.80381286, 0.30589914)
 bones/0/rotation = Quaternion(0.7500541, 0.4363636, 0.32991305, -0.37170297)
+bones/0/rotation = Quaternion(0.7391517, 0.44707084, 0.32214046, -0.38730857)
 bones/0/scale = Vector3(1, 0.99999994, 1)
 bones/1/name = "mixamorig_RightForeArm"
 bones/1/parent = 0
@@ -1467,6 +1551,7 @@ bones/1/rest = Transform3D(0.97153914, 0.2368427, -0.0041671097, -0.23687929, 0.
 bones/1/enabled = true
 bones/1/position = Vector3(-1.1923711e-07, 0.25746587, 4.1770454e-09)
 bones/1/rotation = Quaternion(0.492018, -0.051346444, -0.086355604, 0.86476856)
+bones/1/rotation = Quaternion(0.45209518, -0.05127204, -0.07807655, 0.88706553)
 bones/1/scale = Vector3(1, 1.0000004, 1)
 bones/2/name = "mixamorig_RightHand"
 bones/2/parent = 1
@@ -1533,9 +1618,10 @@ bones/5/rotation = Quaternion(0.065278694, 0.017805237, 0.070151314, 0.9952389)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4655986, 0.28826904, -0.17350578)
 mesh = SubResource("BoxMesh_36556")
 
-[node name="GameManager" type="Node3D" parent="." unique_id=2116898195]
+[node name="GameManager" type="Node3D" parent="." unique_id=2116898195 node_paths=PackedStringArray("customer_dialogue_box")]
 unique_name_in_owner = true
 script = ExtResource("2_0xm2m")
+customer_dialogue_box = NodePath("../UI/MainControl/CustomerDialogueBox")
 
 [node name="HelperFunctions" type="Node3D" parent="GameManager" unique_id=535735836]
 script = ExtResource("5_efxa6")

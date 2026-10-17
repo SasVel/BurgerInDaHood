@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Res="*uid://cjrcd0pgrpsoi"
 Const="*uid://dmj80cfto782y"
 
+[dialogue_manager]
+
+runtime/balloon_path="res:///balloon.tscn"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -28,6 +32,10 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_vim/plugin.cfg")
+
+[gui]
+
+theme/custom_font="uid://d31kpnmeqpi43"
 
 [input]
 
