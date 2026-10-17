@@ -122,9 +122,8 @@ func select_order_items(items_count):
 func complete_customer_order() -> void:
 	if not is_instance_valid(current_customer) or not customer_ready:
 		return
-	print("Order completed!")
+	reputation = min(reputation + 2, MAX_REP)
 	await despawn_customer()
-	print("Customer despawned")
 	spawn_next_customer()
 
 func kill_customer() -> void:
@@ -150,9 +149,6 @@ func end_day() -> void:
 	await despawn_customer()
 	print("Day ", day, " ended!")
 	print("Reputation: ", reputation)
-	if is_instance_valid(current_customer):
-		current_customer.queue_free()
-	current_customer = null
 
 func order_failed():
 	if not customer_ready:
