@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bniongcqno6th" path="res://player.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://ie3ho03ygqpn" path="res://game_manager.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://gt05gwg4l8qp" path="res://Models/RegisterObjects/Desk.glb" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://bvj0uoghp02q3" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://d2f581pthg8av" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cmxsncmxh5lx" path="res://Models/RegisterObjects/MP5.glb" id="5_lquwl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4jhg3"]
