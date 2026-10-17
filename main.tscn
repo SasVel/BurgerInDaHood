@@ -1,5 +1,21 @@
 [gd_scene format=3 uid="uid://dfp4c5dlh8x6k"]
 
+[ext_resource type="Script" uid="uid://bniongcqno6th" path="res://player.gd" id="1_ig7tw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_36556"]
+size = Vector3(0.27819824, 0.17669678, 0.2991333)
+
 [node name="Main" type="Node3D" unique_id=1855453819]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2073357693]
+[node name="Player" type="Node3D" parent="." unique_id=1370602290]
+script = ExtResource("1_ig7tw")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=2073357693]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1850145114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36090088, 0.14413452, -0.99485874)
+mesh = SubResource("BoxMesh_36556")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=10361441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4655986, 0.28826904, -0.17350578)
+mesh = SubResource("BoxMesh_36556")
