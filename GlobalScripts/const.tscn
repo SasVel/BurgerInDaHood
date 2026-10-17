@@ -11,5 +11,11 @@ ItemsSlangDict = Dictionary[int, Array]({
 3: ["oil canakes", "onion rings", "onion circles", "onion bhajis"],
 4: ["chicken wings", "cluckin' wings", "wing-tangs", "wingers"],
 5: ["thick shake", "shake milk", "shake, milky-style", "shake"],
-6: ["bottle of hydrate", "H2O", "Bo'oHw'o'Wo'er", "jug of H2O"]
+6: ["bottle of hydrate", "H2O", "Bo'oHw'o'Wo'er", "jug of H2O"],
+7: ["40 oz", "coke", "soft bubble", "pop", "fizzy"]
 })
+StartSentArr = Array[String](["Yo, ", "Oi, mate, ", "'Olla mi amigo, ", "Wasssuupp ", "Word, ", "What's poppin' ", "Alrigh' mate, "])
+OrderSentArr = Array[String](["hook me up wit' ", "gimme a ", "hook a brother wit' ", "can I cop a ", "hit me up wit' ", "lemme get  ", "can I snag a "])
+EndDialogueSentArr = Array[String]([", love.", ". A'ight?", ", if u would.", ", ya dig?", ", Big G.", ", ye G?"])
+GoodEndingSentArr = Array[String](["Bye, Felicia", "Later, sucka!", "Later, G!", "Cherrio", "Peace out", "Later, gator"])
+BadEndingSentArr = Array[String](["U DEADASS!!!!", "U CORN-FED PORK!!!!!", "U MADE ME BIG MAD!!!!! U GONNA REGRET THIS!!!!!!!!", "U ARE DEAD MEAT!!!!!", "U FrieD TwaT!!!!", "TF U THINKIN'?????!!!!!"])
