@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var customer_dialogue_box : Control
+@onready var helper_functions = %HelperFunctions
 
 const MAX_REP = 100
 const ORDER_TIME = 15.0
@@ -181,6 +182,7 @@ func order_failed():
 	spawn_next_customer()
 
 func show_customer_dialogue():
+	customer_dialogue_box.fill_text(helper_functions.gen_order_dialog(current_order))
 	customer_dialogue_box.visible = true
 
 func hide_customer_dialogue():

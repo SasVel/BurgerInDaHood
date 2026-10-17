@@ -26,15 +26,38 @@ adjustment_brightness = 1.1
 adjustment_contrast = 1.3
 adjustment_saturation = 1.1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvrph"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kkhm"]
 bg_color = Color(1, 1, 1, 1)
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_074og"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_7kkhm"]
-font_size = 23
+font_size = 56
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_vivmo"]
@@ -61,8 +84,8 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_w48qg"]
-font_size = 32
-outline_size = 3
+font_size = 64
+outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
@@ -70,7 +93,7 @@ shader = ExtResource("1_272bh")
 shader_parameter/scanline_count = 115.6930054954175
 shader_parameter/black_bars_thickness = 2.0
 shader_parameter/white = 0.70000001043084
-shader_parameter/opacity = 1.0
+shader_parameter/opacity = 0.5000000074506
 shader_parameter/isOn = 1.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4jhg3"]
@@ -1433,47 +1456,72 @@ grow_horizontal = 2
 mouse_filter = 2
 script = ExtResource("3_yaehf")
 
-[node name="Panel" type="Panel" parent="UI/MainControl/CustomerDialogueBox" unique_id=421409604]
+[node name="PanelContainer" type="Panel" parent="UI/MainControl/CustomerDialogueBox" unique_id=1798888438]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = 17.5
-offset_right = 40.0
-offset_bottom = 97.5
+offset_left = -921.0
+offset_top = -46.0
+offset_right = 564.0
+offset_bottom = 167.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yvrph")
+
+[node name="Panel" type="Panel" parent="UI/MainControl/CustomerDialogueBox/PanelContainer" unique_id=421409604]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 75.0
+offset_top = -152.0
+offset_right = 275.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 0
 rotation = 0.7853982
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_7kkhm")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/MainControl/CustomerDialogueBox" unique_id=1014810463]
+[node name="Panel2" type="Panel" parent="UI/MainControl/CustomerDialogueBox/PanelContainer" unique_id=1051055443]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -548.0
-offset_top = -74.0
-offset_right = 548.0
-offset_bottom = 74.0
+anchor_bottom = 1.0
+offset_left = 30.5
+offset_top = -69.0
+offset_right = 319.5
+offset_bottom = -8.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_074og")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/MainControl/CustomerDialogueBox/PanelContainer" unique_id=1335197183]
-layout_mode = 2
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1485.0
+offset_bottom = 213.5
+metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="UI/MainControl/CustomerDialogueBox/PanelContainer/MarginContainer" unique_id=1556749675]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1437, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "BlaBlaBlaBla"
 label_settings = SubResource("LabelSettings_7kkhm")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="OrderTimeProgressBar" type="TextureProgressBar" parent="UI/MainControl" unique_id=1970548954]
 unique_name_in_owner = true
@@ -1481,11 +1529,12 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -277.0
-offset_top = 98.0
-offset_right = -149.0
-offset_bottom = 226.0
+offset_left = -315.0
+offset_top = 127.0
+offset_right = -187.0
+offset_bottom = 255.0
 grow_horizontal = 0
+scale = Vector2(2, 2)
 value = 100.0
 fill_mode = 4
 texture_under = SubResource("GradientTexture2D_w48qg")
@@ -1493,11 +1542,15 @@ texture_progress = SubResource("GradientTexture2D_36556")
 
 [node name="DayClock" type="Label" parent="UI/MainControl" unique_id=57701889]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 888.0
-offset_top = 36.0
-offset_right = 987.0
-offset_bottom = 81.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_top = 69.0
+offset_right = -119.0
+offset_bottom = 138.0
+grow_horizontal = 0
 text = "13:45"
 label_settings = SubResource("LabelSettings_w48qg")
 horizontal_alignment = 1
@@ -1566,14 +1619,14 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(0.059585154, 0.9981355, -0.0132314265, 0.951745, -0.052808285, 0.30231225, 0.3010499, -0.030606255, -0.95311713, -0.4740218, 0.80381286, 0.30589914)
 bones/0/enabled = true
 bones/0/position = Vector3(-0.4740218, 0.80381286, 0.30589914)
-bones/0/rotation = Quaternion(0.75958014, 0.4264642, 0.3367994, -0.35739684)
+bones/0/rotation = Quaternion(0.75584406, 0.43041086, 0.33408746, -0.36308685)
 bones/0/scale = Vector3(1, 0.99999994, 1)
 bones/1/name = "mixamorig_RightForeArm"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0.97153914, 0.2368427, -0.0041671097, -0.23687929, 0.97138906, -0.017092636, -3.5762787e-07, 0.017593268, 0.9998453, -1.1923711e-07, 0.25746587, 4.1770454e-09)
 bones/1/enabled = true
 bones/1/position = Vector3(-1.1923711e-07, 0.25746587, 4.1770454e-09)
-bones/1/rotation = Quaternion(0.5271651, -0.051318344, -0.09367352, 0.8430236)
+bones/1/rotation = Quaternion(0.51335734, -0.051340323, -0.09079517, 0.85181266)
 bones/1/scale = Vector3(1, 1.0000004, 1)
 bones/2/name = "mixamorig_RightHand"
 bones/2/parent = 1
@@ -1639,6 +1692,7 @@ script = ExtResource("2_0xm2m")
 customer_dialogue_box = NodePath("../UI/MainControl/CustomerDialogueBox")
 
 [node name="HelperFunctions" type="Node3D" parent="GameManager" unique_id=535735836]
+unique_name_in_owner = true
 script = ExtResource("5_efxa6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1199503585]
@@ -1678,13 +1732,5 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.23198035, -0.1155966
 
 [node name="ShelvesWall" parent="." unique_id=547475857 instance=ExtResource("9_kek77")]
 transform = Transform3D(-3.934025e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.934025e-08, 0.6756252, -1.304385, -0.28043735)
-
-[node name="Control" type="Control" parent="." unique_id=2009259907]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [editable path="Item"]
