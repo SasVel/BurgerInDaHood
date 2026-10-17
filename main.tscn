@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://gt05gwg4l8qp" path="res://Models/RegisterObjects/Desk.glb" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bvj0uoghp02q3" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
 [ext_resource type="Animation" uid="uid://bkh5ptus0lv6j" path="res://Models/Shared/HandAnimations/hand_idle.anim" id="4_dg77c"]
+[ext_resource type="PackedScene" uid="uid://bbrui37ftrbvv" path="res://Models/Shared/Hand.glb" id="3_4c57u"]
+[ext_resource type="PackedScene" uid="uid://gt05gwg4l8qp" path="res://Models/RegisterObjects/Desk.glb" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dxrxgtdja08bv" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://cftidvm2gvh4r" path="res://helper_functions.gd" id="5_efxa6"]
 [ext_resource type="PackedScene" uid="uid://cmxsncmxh5lx" path="res://Models/RegisterObjects/MP5.glb" id="5_lquwl"]
 [ext_resource type="Animation" uid="uid://cbsefsn73xu4i" path="res://Models/Shared/HandAnimations/hand_interact.anim" id="5_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://cmjhodjp1jegd" path="res://Models/RegisterObjects/RegisterScnBG.glb" id="6_7mycd"]
@@ -1416,6 +1420,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02328816, 0)
 [node name="Hand2" type="Node3D" parent="Player" unique_id=1440973040]
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.12932085, -0.4957615, -0.2183423)
 
+<<<<<<< HEAD
 [node name="Hand" type="Node3D" parent="Player/Hand2" unique_id=1432937195]
 
 [node name="GeneralSkeleton" type="Skeleton3D" parent="Player/Hand2/Hand" unique_id=107844542]
@@ -1500,6 +1505,15 @@ unique_name_in_owner = true
 root_node = NodePath("%HandAnimTree/../Hand2")
 tree_root = SubResource("AnimationNodeStateMachine_7kkhm")
 anim_player = NodePath("../Hand2/AnimationPlayer")
+=======
+[node name="Skeleton3D" parent="Player/Hand2/Hand" parent_id_path=PackedInt32Array(1626577642, 1685390009) index="0" unique_id=643689018]
+bones/0/rotation = Quaternion(0.5837583, 0.6479389, -0.2155793, -0.43923467)
+bones/1/rotation = Quaternion(0.09804709, -0.011098542, -0.19471906, 0.9758833)
+bones/2/rotation = Quaternion(0.015925266, -0.0010598651, -0.051710673, 0.9985346)
+bones/3/rotation = Quaternion(0.08286458, -0.0021594702, 0.0841489, 0.99299943)
+bones/4/rotation = Quaternion(0.049985867, 3.080318e-07, -0.08081169, 0.9954753)
+bones/5/rotation = Quaternion(0.065278694, 0.017805237, 0.070151314, 0.9952389)
+>>>>>>> 92122d9 (order dialog generator)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=10361441]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4655986, 0.28826904, -0.17350578)
@@ -1508,6 +1522,9 @@ mesh = SubResource("BoxMesh_36556")
 [node name="GameManager" type="Node3D" parent="." unique_id=2116898195]
 unique_name_in_owner = true
 script = ExtResource("2_0xm2m")
+
+[node name="HelperFunctions" type="Node3D" parent="GameManager" unique_id=535735836]
+script = ExtResource("5_efxa6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1199503585]
 transform = Transform3D(1, 0, 0, 0, 0.7554458, 0.65521115, 0, -0.65521115, 0.7554458, 0, 0.92794234, 0)
