@@ -50,7 +50,8 @@ func _input(event):
 				print("You clicked on an item!")
 			elif object is CustomerHitbox:
 				if held_item == null: return
-				held_item.tween_activate()
-				customer_interaction.emit(-1 if held_item.is_gun else held_item.type)
+				await held_item.tween_activate()
+				customer_interaction.emit(held_item)
+				if !held_item.is_gun: held_item.queue_free()
 		else:
 			print("You clicked on nothing")

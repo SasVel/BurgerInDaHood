@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://7f7ald3kidi"]
+
+[ext_resource type="Script" uid="uid://br165gqvbv3lw" path="res://Components/item.gd" id="1_by14v"]
+[ext_resource type="ArrayMesh" uid="uid://8qbg05pyab0d" path="res://Models/Food/Hamburger.obj" id="2_osun5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pcic6"]
+radius = 0.046875
+height = 0.123046875
+
+[node name="Item4" type="StaticBody3D" unique_id=1191479078 node_paths=PackedStringArray("item_mesh")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_by14v")
+type = 1
+item_mesh = NodePath("MeshInstance3D")
+metadata/_custom_type_script = "uid://br165gqvbv3lw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1914530858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017619655, -0.009063721, 0.039094567)
+shape = SubResource("CapsuleShape3D_pcic6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=62156456]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("2_osun5")

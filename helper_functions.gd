@@ -1,19 +1,31 @@
 extends Node3D
 
-func gen_listing(arr) -> String:
+## Returns an array with first entry being the text and second a dict with word -> chosen slang.
+func gen_listing(arr) -> Array:
 	var count = arr.size()
 	
+	var result = ""
+	var item
+	var slang
 	if(count <= 0):
-		return ""
+		return []
 		
 	elif(count == 1):
-		var item = (Const.ItemsSlangDict[Const.Items[arr[0]]]).pick_random()
-		return item
-	
-	var result = ""
-	
+		item = Const.Items[arr[0]]
+		slang = Const.ItemsSlangDict[item].pick_random()
+		result = "[i]" + slang + "[/i]"
+		return [result, ItemData.new().init(item, slang, Const.OrderCompletions.Neutral)]
+
+	var res_datas : Array[ItemData]
 	for i in range(count):
-		result += (Const.ItemsSlangDict[Const.Items[arr[i]]]).pick_random()
+		item = arr[i] as Const.Items
+		slang = Const.ItemsSlangDict[item].pick_random()
+		result += "[i]" + slang + "[/i]"
+
+		if res_datas.map(func(x): return x.type).has(item):
+			res_datas.filter(func(x): return x.type == item)[0].count += 1
+		else:
+			res_datas.append(ItemData.new().init(item, slang, Const.OrderCompletions.Neutral))
 		
 		if(i == count - 1):
 			break
@@ -24,17 +36,19 @@ func gen_listing(arr) -> String:
 		
 		result += ", "
 	
-	return result
+	return [result, res_datas]
 
-func gen_order_dialog(arr)->String:
+## Returns an array with first entry being the text and second a dict with word -> chosen slang.
+func gen_order_dialog(arr)->Array:
 	var result = "";
 	
 	result += Const.StartSentArr.pick_random() + Const.OrderSentArr.pick_random()
 	
 	var order_size = arr.size();
-	result += gen_listing(arr)
+	var generated_arr = gen_listing(arr)
+	result += generated_arr[0]
 	
 	result += Const.EndDialogueSentArr.pick_random()
 	
 	print(result)
-	return result
+	return [result, generated_arr[1]]

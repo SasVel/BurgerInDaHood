@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://uk6tmpqy2cdh"]
+
+[ext_resource type="Script" uid="uid://br165gqvbv3lw" path="res://Components/item.gd" id="1_mv568"]
+[ext_resource type="ArrayMesh" uid="uid://bnvhlag6rq4xb" path="res://Models/Food/Fries.obj" id="2_i6j06"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u03aj"]
+size = Vector3(0.18115234, 0.24621582, 0.08065796)
+
+[node name="Item5" type="StaticBody3D" unique_id=1582147228 node_paths=PackedStringArray("item_mesh")]
+transform = Transform3D(-0.0018352717, 0, 0.19999158, 0, 0.19999999, 0, -0.19999158, 0, -0.0018352717, 0, 0, 0)
+script = ExtResource("1_mv568")
+type = 2
+item_mesh = NodePath("MeshInstance3D")
+metadata/_custom_type_script = "uid://br165gqvbv3lw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1717069343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022705078, 0.01727283, 0.067214966)
+shape = SubResource("BoxShape3D_u03aj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2116324090]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = ExtResource("2_i6j06")

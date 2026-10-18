@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dgm0m23c3agyo"]
+
+[ext_resource type="Script" uid="uid://br165gqvbv3lw" path="res://Components/item.gd" id="1_lrmns"]
+[ext_resource type="ArrayMesh" uid="uid://7ic4rk41q04l" path="res://Models/Food/Milk.obj" id="2_mycbj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_epyww"]
+size = Vector3(0.090270996, 0.17285156, 0.09082031)
+
+[node name="Item3" type="StaticBody3D" unique_id=149774104 node_paths=PackedStringArray("item_mesh")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+script = ExtResource("1_lrmns")
+type = 5
+item_mesh = NodePath("MeshInstance3D")
+metadata/_custom_type_script = "uid://br165gqvbv3lw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1928416396]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, -0.014740005, -0.041015565, 0.018310487)
+shape = SubResource("BoxShape3D_epyww")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=325184646]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("2_mycbj")
