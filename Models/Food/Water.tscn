@@ -1,13 +1,17 @@
 [gd_scene format=3 uid="uid://dftq6jui7cuou"]
 
 [ext_resource type="Script" uid="uid://br165gqvbv3lw" path="res://Components/item.gd" id="1_wmixp"]
-[ext_resource type="ArrayMesh" uid="uid://bosor5fe8mjn5" path="res://Models/Food/Water.obj" id="2_0qmjo"]
+[ext_resource type="ArrayMesh" uid="uid://decgvnbfitj6" path="res://Models/Food/Water.obj" id="2_0qmjo"]
+[ext_resource type="Texture2D" uid="uid://b2cpr3wrbgaab" path="res://Models/Textures/atlas1.png" id="2_8ha0m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u03aj"]
 radius = 0.056152344
 height = 0.22955322
 
-[node name="Item7" type="StaticBody3D" unique_id=109674291 node_paths=PackedStringArray("item_mesh")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxtuc"]
+albedo_texture = ExtResource("2_8ha0m")
+
+[node name="Water" type="StaticBody3D" unique_id=109674291 node_paths=PackedStringArray("item_mesh")]
 transform = Transform3D(-0.005248811, -0.10741284, 0.28006235, -0.0020127331, 0.28011152, 0.10739398, -0.2999473, 0, -0.005621487, 0, 0, 0)
 script = ExtResource("1_wmixp")
 type = 6
@@ -15,9 +19,10 @@ item_mesh = NodePath("MeshInstance3D")
 metadata/_custom_type_script = "uid://br165gqvbv3lw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1515699229]
-transform = Transform3D(0.99999976, 0, 7.450581e-09, 0, 0.99997073, 0, -7.450581e-09, 0, 0.99999976, -0.0005365163, -0.060512096, 0.02862674)
+transform = Transform3D(1, 0, 7.450582e-09, 0, 1, 0, -7.450582e-09, 0, 1, -0.0005365163, -0.060512096, 0.02862674)
 shape = SubResource("CapsuleShape3D_u03aj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=272505075]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_qxtuc")
 mesh = ExtResource("2_0qmjo")
