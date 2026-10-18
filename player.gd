@@ -2,6 +2,7 @@ extends Node3D
 
 signal customer_interaction(item)
 signal turned_to_customer
+signal picked_up_item
 
 @onready var camera = $Camera3D
 @export var turn_speed = 10
@@ -48,6 +49,7 @@ func _input(event):
 			if object is Item and object != held_item and held_item == null:
 				held_item = object
 				held_item.pick_up(%HandMarker)
+				picked_up_item.emit()
 				print("You clicked on an item!")
 			elif object is CustomerHitbox:
 				if held_item == null: return

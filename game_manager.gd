@@ -48,8 +48,13 @@ func _ready() -> void:
 	print(Const.Items)
 	player.turned_to_customer.connect(_on_player_turned_to_customer)
 	player.customer_interaction.connect(_on_customer_interaction)
+	player.picked_up_item.connect(_on_picked_up_item)
 	order_time_progress_bar.max_value = ORDER_TIME
 	start_day()
+
+func _on_picked_up_item() -> void:
+	if is_evil:
+		print("BANG!")
 
 func _physics_process(delta: float) -> void:
 	if not day_running:
