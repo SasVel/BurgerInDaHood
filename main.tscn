@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://gt05gwg4l8qp" path="res://Models/RegisterObjects/Desk.glb" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://dmbvwt2ig648k" path="res://UI/customer_dialogue_box.gd" id="3_yaehf"]
 [ext_resource type="PackedScene" uid="uid://b1f586keifjyn" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bvj0uoghp02q3" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://d3ekpth3rfscc" path="res://label.gd" id="4_cegan"]
 [ext_resource type="Animation" uid="uid://bkh5ptus0lv6j" path="res://Models/Shared/HandAnimations/hand_idle.anim" id="4_dg77c"]
 [ext_resource type="Script" uid="uid://cftidvm2gvh4r" path="res://helper_functions.gd" id="5_efxa6"]
@@ -24,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bp8yjsy5fi2t6" path="res://Components/item.tscn" id="10_w48qg"]
 [ext_resource type="AudioStream" uid="uid://bqisa6mbf0njb" path="res://MusicAndSFX/SFX/screaming/VOXScrm_Male in Shock 4_344 Audio_Screaming.wav" id="14_htxhm"]
 [ext_resource type="AudioStream" uid="uid://ctvtjvugqk3xu" path="res://MusicAndSFX/SFX/screaming/VOXScrm_Male Serial Killer Attacking 1_344 Audio_Screaming.wav" id="15_jq2sk"]
-[ext_resource type="PackedScene" uid="uid://bsfb7dirvqqix" path="res://Models/Customers/Gun.glb" id="16_jq2sk"]
+[ext_resource type="PackedScene" uid="uid://cyiosddse50rs" path="res://Models/Customers/Gun.glb" id="16_jq2sk"]
 [ext_resource type="AudioStream" uid="uid://squ682p4kadq" path="res://MusicAndSFX/SFX/grab/universfield-gun-reload-123781.mp3" id="17_qsp4k"]
 [ext_resource type="AudioStream" uid="uid://bgytb4ca0sssp" path="res://MusicAndSFX/SFX/rifle/M1918_Browning_Automatic_Rifle_.30cal_0.1m_to_right_Double_shots_x_1.wav" id="18_kq58d"]
 [ext_resource type="PackedScene" uid="uid://ca57lobullqp7" path="res://Models/Food/Chicken.tscn" id="20_qsp4k"]
@@ -38,6 +39,10 @@
 [ext_resource type="PackedScene" uid="uid://5s0n8h2tfu7v" path="res://Models/Food/soda.tscn" id="34_4k2k6"]
 [ext_resource type="PackedScene" uid="uid://q0hvlicyetcu" path="res://Models/ShelvesObjects/barrel.tscn" id="35_0rl1p"]
 [ext_resource type="Script" uid="uid://ur4y2xplls64" path="res://trash_bin.gd" id="36_ok6jj"]
+[ext_resource type="Texture2D" uid="uid://dhhjp4sh7nsfj" path="res://Models/Decals/cobweb_1.png" id="37_h8e4i"]
+[ext_resource type="Texture2D" uid="uid://bxr3ei4rxednu" path="res://Models/Decals/crack_wall_1.png" id="38_4lmeg"]
+[ext_resource type="Texture2D" uid="uid://dmww22mtstr1r" path="res://Models/Decals/water_stain_1.png" id="39_0cp0l"]
+[ext_resource type="Texture2D" uid="uid://qjob6j8kospl" path="res://Models/Decals/poster_missing.png" id="42_0cp0l"]
 
 [sub_resource type="Environment" id="Environment_7kkhm"]
 ambient_light_color = Color(0.33031926, 0.19907245, 0.086007796, 1)
@@ -106,6 +111,11 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_7kkhm"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_2k2o5"]
+font_size = 42
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
 shader = ExtResource("1_272bh")
@@ -1577,7 +1587,7 @@ transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 
-[node name="MainControl" type="Control" parent="SubViewport" unique_id=1501933095]
+[node name="MainControl" type="Control" parent="SubViewport" unique_id=1483846440]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1587,7 +1597,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_2cqfq")
 
-[node name="CustomerDialogueBox" type="Control" parent="SubViewport/MainControl" unique_id=1774384425]
+[node name="CustomerDialogueBox" type="Control" parent="SubViewport/MainControl" unique_id=275109227]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1596,7 +1606,7 @@ grow_horizontal = 2
 mouse_filter = 2
 script = ExtResource("3_yaehf")
 
-[node name="PanelContainer" type="Panel" parent="SubViewport/MainControl/CustomerDialogueBox" unique_id=275079471]
+[node name="PanelContainer" type="Panel" parent="SubViewport/MainControl/CustomerDialogueBox" unique_id=617065274]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1611,7 +1621,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yvrph")
 
-[node name="Panel" type="Panel" parent="SubViewport/MainControl/CustomerDialogueBox/PanelContainer" unique_id=1117815239]
+[node name="Panel" type="Panel" parent="SubViewport/MainControl/CustomerDialogueBox/PanelContainer" unique_id=1919994787]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1628,7 +1638,7 @@ rotation = 0.7853982
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_7kkhm")
 
-[node name="Panel2" type="Panel" parent="SubViewport/MainControl/CustomerDialogueBox/PanelContainer" unique_id=2120612242]
+[node name="Panel2" type="Panel" parent="SubViewport/MainControl/CustomerDialogueBox/PanelContainer" unique_id=206663455]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1644,7 +1654,7 @@ grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_074og")
 
-[node name="MarginContainer" type="MarginContainer" parent="SubViewport/MainControl/CustomerDialogueBox/PanelContainer" unique_id=919567275]
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/MainControl/CustomerDialogueBox/PanelContainer" unique_id=765677451]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -1652,7 +1662,7 @@ offset_right = 1485.0
 offset_bottom = 213.5
 metadata/_edit_lock_ = true
 
-[node name="Label" type="RichTextLabel" parent="SubViewport/MainControl/CustomerDialogueBox/PanelContainer/MarginContainer" unique_id=1849503901]
+[node name="Label" type="RichTextLabel" parent="SubViewport/MainControl/CustomerDialogueBox/PanelContainer/MarginContainer" unique_id=1077527732]
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
@@ -1661,7 +1671,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_cegan")
 
-[node name="OrderTimeProgressBar" type="TextureProgressBar" parent="SubViewport/MainControl" unique_id=744861436]
+[node name="OrderTimeProgressBar" type="TextureProgressBar" parent="SubViewport/MainControl" unique_id=54554107]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
@@ -1678,7 +1688,7 @@ fill_mode = 4
 texture_under = SubResource("GradientTexture2D_w48qg")
 texture_progress = SubResource("GradientTexture2D_36556")
 
-[node name="DayClock" type="Label" parent="SubViewport/MainControl" unique_id=1455870011]
+[node name="DayClock" type="Label" parent="SubViewport/MainControl" unique_id=910195212]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
@@ -1701,6 +1711,14 @@ texture = SubResource("ViewportTexture_7kkhm")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1784491341]
 follow_viewport_enabled = true
+
+[node name="Label" type="Label" parent="UI" unique_id=1120107584]
+offset_left = 38.0
+offset_top = 998.0
+offset_right = 440.0
+offset_bottom = 1092.0
+text = "Rotate with Q and E"
+label_settings = SubResource("LabelSettings_2k2o5")
 
 [node name="Shaders" type="CanvasLayer" parent="." unique_id=617022070]
 layer = 2
@@ -1783,6 +1801,8 @@ bones/0/rest = Transform3D(0.059585154, 0.9981355, -0.0132314265, 0.951745, -0.0
 bones/0/enabled = true
 bones/0/position = Vector3(-0.4740218, 0.80381286, 0.30589914)
 bones/0/rotation = Quaternion(0.73174417, 0.454001, 0.31691948, -0.39748684)
+bones/0/rotation = Quaternion(0.7367499, 0.44934726, 0.3204425, -0.39064503)
+bones/0/rotation = Quaternion(0.74579275, 0.4406241, 0.3268617, -0.37789547)
 bones/0/scale = Vector3(1, 0.99999994, 1)
 bones/1/name = "mixamorig_RightForeArm"
 bones/1/parent = 0
@@ -1790,6 +1810,8 @@ bones/1/rest = Transform3D(0.97153914, 0.2368427, -0.0041671097, -0.23687929, 0.
 bones/1/enabled = true
 bones/1/position = Vector3(-1.1923711e-07, 0.25746587, 4.1770454e-09)
 bones/1/rotation = Quaternion(0.4252221, -0.051162366, -0.07252229, 0.900727)
+bones/1/rotation = Quaternion(0.44335666, -0.051241495, -0.07626882, 0.8916235)
+bones/1/rotation = Quaternion(0.47636735, -0.051330317, -0.08310606, 0.8738037)
 bones/1/scale = Vector3(1, 1.0000004, 1)
 bones/2/name = "mixamorig_RightHand"
 bones/2/parent = 1
@@ -1967,6 +1989,32 @@ shape = SubResource("CylinderShape3D_tn1tw")
 
 [node name="Godot_Model" parent="." unique_id=1465761995 instance=ExtResource("8_b1qrp")]
 transform = Transform3D(-4.3711387e-10, -0.0040015765, 0.009164463, 0, 0.009164463, 0.0040015765, -0.01, 1.7491446e-10, -4.005914e-10, -0.24970873, -0.12278715, 0.024374653)
+
+[node name="Decals" type="Node" parent="." unique_id=296711207]
+
+[node name="Sprite3D" type="Sprite3D" parent="Decals" unique_id=685960066]
+transform = Transform3D(0.15992633, 0, 0.12009817, 0, 0.2, 0, -0.12009817, 0, 0.15992633, -0.25666857, 0.32540473, -0.28939682)
+texture = ExtResource("37_h8e4i")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Decals" unique_id=1963381127]
+transform = Transform3D(-8.031199e-09, 3.4535883e-09, 0.2, 0.07900889, 0.1837324, 0, -0.1837324, 0.07900889, -8.742278e-09, -0.36970055, 0.27939382, 1.6160127e-08)
+texture = ExtResource("38_4lmeg")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Decals" unique_id=1129202017]
+transform = Transform3D(-8.227856e-09, -2.954625e-09, 0.2, -0.06759395, 0.1882314, -4.440892e-16, -0.1882314, -0.06759395, -8.742278e-09, -0.36970055, 0.4067824, 0.27163982)
+texture = ExtResource("38_4lmeg")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Decals" unique_id=1602163424]
+transform = Transform3D(-1.1961082e-08, 5.375335e-09, 0.3, 0.12297332, 0.27363768, -4.2382143e-16, -0.27363768, 0.12297332, -1.3113417e-08, -0.36970055, -0.023536006, 0.50489324)
+texture = ExtResource("38_4lmeg")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Decals" unique_id=1132775092]
+transform = Transform3D(0.2, 0, 0, 0, -8.742278e-09, 0.2, 0, -0.2, -8.742278e-09, 0.27945387, -0.09878142, -0.26492935)
+texture = ExtResource("39_0cp0l")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Decals" unique_id=1904928072]
+transform = Transform3D(0.19779797, -0.02959669, 0, 0.02959669, 0.19779797, 0, 0, 0, 0.2, -0.30251992, 0.14629643, -0.37999386)
+texture = ExtResource("42_0cp0l")
 
 [connection signal="finished" from="Musics" to="." method="_on_audio_stream_player_finished"]
 [connection signal="on_customer_not_ready" from="GameManager" to="GameManager" method="_on_on_customer_not_ready"]

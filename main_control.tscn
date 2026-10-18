@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://qymsakdyy6wi"]
+
+[ext_resource type="Theme" uid="uid://bsk1fyhloxt7b" path="res://Components/main_theme.tres" id="1_f3abk"]
+[ext_resource type="Script" uid="uid://dmbvwt2ig648k" path="res://UI/customer_dialogue_box.gd" id="2_ee65a"]
+[ext_resource type="Script" uid="uid://d3ekpth3rfscc" path="res://label.gd" id="3_32n2t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvrph"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kkhm"]
+bg_color = Color(1, 1, 1, 1)
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_074og"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Gradient" id="Gradient_vivmo"]
+offsets = PackedFloat32Array(0.6233766, 0.6363636)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w48qg"]
+gradient = SubResource("Gradient_vivmo")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_w48qg"]
+offsets = PackedFloat32Array(0.52597404, 0.53246754)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_36556"]
+gradient = SubResource("Gradient_w48qg")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w48qg"]
+font_size = 64
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2k2o5"]
+font_size = 42
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainControl" type="Control" unique_id=1483846440]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_f3abk")
+
+[node name="CustomerDialogueBox" type="Control" parent="." unique_id=275109227]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 183.0
+grow_horizontal = 2
+mouse_filter = 2
+script = ExtResource("2_ee65a")
+
+[node name="PanelContainer" type="Panel" parent="CustomerDialogueBox" unique_id=617065274]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -921.0
+offset_top = -46.0
+offset_right = 564.0
+offset_bottom = 167.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yvrph")
+
+[node name="Panel" type="Panel" parent="CustomerDialogueBox/PanelContainer" unique_id=1919994787]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 75.0
+offset_top = -152.0
+offset_right = 275.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.7853982
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_7kkhm")
+
+[node name="Panel2" type="Panel" parent="CustomerDialogueBox/PanelContainer" unique_id=206663455]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 30.5
+offset_top = -69.0
+offset_right = 319.5
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_074og")
+
+[node name="MarginContainer" type="MarginContainer" parent="CustomerDialogueBox/PanelContainer" unique_id=765677451]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1485.0
+offset_bottom = 213.5
+metadata/_edit_lock_ = true
+
+[node name="Label" type="RichTextLabel" parent="CustomerDialogueBox/PanelContainer/MarginContainer" unique_id=1077527732]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=56][color=BLACK]Wasssuupp gimme a [b]jug of H2O[/b] 'n [b]soft bubble[/b], Big G.[/font_color][/font_size]"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_32n2t")
+
+[node name="OrderTimeProgressBar" type="TextureProgressBar" parent="." unique_id=54554107]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -315.0
+offset_top = 127.0
+offset_right = -187.0
+offset_bottom = 255.0
+grow_horizontal = 0
+scale = Vector2(2, 2)
+value = 100.0
+fill_mode = 4
+texture_under = SubResource("GradientTexture2D_w48qg")
+texture_progress = SubResource("GradientTexture2D_36556")
+
+[node name="DayClock" type="Label" parent="." unique_id=910195212]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_top = 69.0
+offset_right = -119.0
+offset_bottom = 138.0
+grow_horizontal = 0
+text = "13:45"
+label_settings = SubResource("LabelSettings_w48qg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=1120107584]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 998.0
+offset_right = 440.0
+offset_bottom = 1092.0
+text = "Rotate with Q and E"
+label_settings = SubResource("LabelSettings_2k2o5")
