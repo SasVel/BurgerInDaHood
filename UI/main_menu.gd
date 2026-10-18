@@ -9,3 +9,7 @@ func _on_credits_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_musics_finished() -> void:
+	%Musics.play()

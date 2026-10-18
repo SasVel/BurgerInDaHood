@@ -5,7 +5,7 @@ extends Node3D
 
 const MAX_REP = 100
 const ORDER_TIME = 60.0
-const CUSTOMER_DISTANCE = .56
+const CUSTOMER_DISTANCE = .6
 const DAY_TIME = 240
 
 @onready var player: Node3D = %Player
@@ -15,6 +15,7 @@ const DAY_TIME = 240
 @onready var reputation = GameState.reputation :
 	set(val):
 		GameState.reputation = clamp(val, 0, MAX_REP)
+		reputation = GameState.reputation
 		if GameState.reputation == 0:
 			no_rep_reached.emit()
 		elif GameState.reputation == MAX_REP:
@@ -53,8 +54,14 @@ func _ready() -> void:
 	start_day()
 
 func _on_picked_up_item() -> void:
-	if is_evil:
-		print("BANG!")
+	if is_evil and customer_ready:
+		%CustomerBonusAnims.play("pull_gun")
+
+func _on_customer_bonus_anims_animation_finished(anim_name: StringName) -> void:
+	if anim_name == &"pull_gun" and customer_ready:
+		%CustomerBonusAnims.play("shoot_gun")
+	elif anim_name == &"shoot_gun":
+		SceneTransition.change_scene("res://UI/GameOver.tscn")
 
 func _physics_process(delta: float) -> void:
 	if not day_running:

@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bp8yjsy5fi2t6" path="res://Components/item.tscn" id="10_w48qg"]
 [ext_resource type="AudioStream" uid="uid://bqisa6mbf0njb" path="res://MusicAndSFX/SFX/screaming/VOXScrm_Male in Shock 4_344 Audio_Screaming.wav" id="14_htxhm"]
 [ext_resource type="AudioStream" uid="uid://ctvtjvugqk3xu" path="res://MusicAndSFX/SFX/screaming/VOXScrm_Male Serial Killer Attacking 1_344 Audio_Screaming.wav" id="15_jq2sk"]
+[ext_resource type="PackedScene" uid="uid://cyiosddse50rs" path="res://Models/Customers/Gun.glb" id="16_jq2sk"]
 [ext_resource type="AudioStream" uid="uid://squ682p4kadq" path="res://MusicAndSFX/SFX/grab/universfield-gun-reload-123781.mp3" id="17_qsp4k"]
 [ext_resource type="AudioStream" uid="uid://bgytb4ca0sssp" path="res://MusicAndSFX/SFX/rifle/M1918_Browning_Automatic_Rifle_.30cal_0.1m_to_right_Double_shots_x_1.wav" id="18_kq58d"]
 [ext_resource type="PackedScene" uid="uid://ca57lobullqp7" path="res://Models/Food/Chicken.tscn" id="20_qsp4k"]
@@ -1435,6 +1436,81 @@ states/hand_interact/node = SubResource("AnimationNodeAnimation_ycdy4")
 states/hand_interact/position = Vector2(525, 84)
 transitions = ["Start", "hand_idle", SubResource("AnimationNodeStateMachineTransition_w48qg"), "hand_idle", "hand_interact", SubResource("AnimationNodeStateMachineTransition_vivmo"), "hand_interact", "hand_idle", SubResource("AnimationNodeStateMachineTransition_2cqfq")]
 
+[sub_resource type="Animation" id="Animation_come4"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.0583795, -0.24260652, -0.833925)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, -1.5707964)]
+}
+
+[sub_resource type="Animation" id="Animation_h8e4i"]
+resource_name = "pull_gun"
+length = 4.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.058379516, -0.27281868, -0.7667278, 4, 1, -0.058, 0.009, -0.767)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, -1.5707964)]
+}
+
+[sub_resource type="Animation" id="Animation_4lmeg"]
+resource_name = "shoot_gun"
+length = 0.15
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.058, 0.009, -0.767, 0.14705276, 1, -0.058, 0.05, -0.767)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gun:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.14705276),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, -1.5707964), Vector3(-5.750447e-16, -1.5707964, -1.3621031)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0cp0l"]
+_data = {
+&"RESET": SubResource("Animation_come4"),
+&"pull_gun": SubResource("Animation_h8e4i"),
+&"shoot_gun": SubResource("Animation_4lmeg")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_36556"]
 size = Vector3(0.1940155, 0.38964844, 0.34350586)
 
@@ -1451,7 +1527,8 @@ height = 0.34791565
 [node name="Main" type="Node3D" unique_id=1855453819]
 script = ExtResource("1_2cqfq")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=870435629]
+[node name="Musics" type="AudioStreamPlayer" parent="." unique_id=870435629]
+unique_name_in_owner = true
 stream = ExtResource("2_xuqvo")
 autoplay = true
 bus = &"Music"
@@ -1658,14 +1735,14 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(0.059585154, 0.9981355, -0.0132314265, 0.951745, -0.052808285, 0.30231225, 0.3010499, -0.030606255, -0.95311713, -0.4740218, 0.80381286, 0.30589914)
 bones/0/enabled = true
 bones/0/position = Vector3(-0.4740218, 0.80381286, 0.30589914)
-bones/0/rotation = Quaternion(0.72433233, 0.4606774, 0.31174058, -0.4073534)
+bones/0/rotation = Quaternion(0.7172436, 0.46683705, 0.30682692, -0.41651192)
 bones/0/scale = Vector3(1, 0.99999994, 1)
 bones/1/name = "mixamorig_RightForeArm"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0.97153914, 0.2368427, -0.0041671097, -0.23687929, 0.97138906, -0.017092636, -3.5762787e-07, 0.017593268, 0.9998453, -1.1923711e-07, 0.25746587, 4.1770454e-09)
 bones/1/enabled = true
 bones/1/position = Vector3(-1.1923711e-07, 0.25746587, 4.1770454e-09)
-bones/1/rotation = Quaternion(0.3985909, -0.05100881, -0.06703182, 0.9132526)
+bones/1/rotation = Quaternion(0.3733915, -0.050824083, -0.06184887, 0.92421347)
 bones/1/scale = Vector3(1, 1.0000004, 1)
 bones/2/name = "mixamorig_RightHand"
 bones/2/parent = 1
@@ -1744,6 +1821,10 @@ transform = Transform3D(0.118293956, 0.9847878, -0.12727705, -0.7404724, 0.17288
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10167116, 0.14855337)
 script = ExtResource("7_ycdy4")
 
+[node name="CustomerBonusAnims" type="AnimationPlayer" parent="CustomerHitbox" unique_id=1037423772]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_0cp0l")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CustomerHitbox" unique_id=1263604397]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00948596, 0.022949219, -0.9099499)
 shape = SubResource("BoxShape3D_36556")
@@ -1755,6 +1836,9 @@ volume_db = 15.094
 max_db = 6.0
 panning_strength = 2.0
 bus = &"SFX"
+
+[node name="Gun" parent="CustomerHitbox" unique_id=1194030134 instance=ExtResource("16_jq2sk")]
+transform = Transform3D(1.9106855e-17, -4.3711387e-10, -0.01, -0.01, -4.3711387e-10, 0, -4.3711387e-10, 0.01, -4.3711387e-10, -0.0583795, -0.24260652, -0.833925)
 
 [node name="Desk" parent="." unique_id=2026969727 instance=ExtResource("3_h2yge")]
 transform = Transform3D(0.32364088, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.004626155, -0.3859299, -0.25735572)
@@ -1820,5 +1904,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23375331, 0.0436987, 0.148
 
 [node name="Shelves" parent="." unique_id=396342033 instance=ExtResource("28_xuqvo")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.20497477, -2.9802322e-08, 0.06466706)
+
+[connection signal="finished" from="Musics" to="." method="_on_audio_stream_player_finished"]
+[connection signal="animation_finished" from="CustomerHitbox/CustomerBonusAnims" to="GameManager" method="_on_customer_bonus_anims_animation_finished"]
 
 [editable path="Item"]
