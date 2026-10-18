@@ -26,7 +26,7 @@ const DAY_TIME = 240
 @onready var profits: float = GameState.profits
 var time_left: float = 0.0
 
-var ORDER_TIME = 20.0 / ((day * 0.1) + 1)
+@onready var ORDER_TIME = 20.0 / ((day * 0.5) + 1)
 
 var day_running: bool = false
 var customer_ready: bool = false :
