@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://cgkoj1ljs3bfm" path="res://red_effect.gd" id="7_0rl1p"]
 [ext_resource type="Script" uid="uid://c4edrokwq8kqp" path="res://customer_hitbox.gd" id="7_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://b4v5xwphf8sxe" path="res://Models/RegisterObjects/CashRegister.glb" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://b3tl8buu4xdx4" path="res://Models/Godot_Model.glb" id="8_b1qrp"]
 [ext_resource type="PackedScene" uid="uid://bngver2rcr5n2" path="res://Models/ShelvesObjects/ShelvesWall.glb" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://bp8yjsy5fi2t6" path="res://Components/item.tscn" id="10_w48qg"]
 [ext_resource type="AudioStream" uid="uid://bqisa6mbf0njb" path="res://MusicAndSFX/SFX/screaming/VOXScrm_Male in Shock 4_344 Audio_Screaming.wav" id="14_htxhm"]
@@ -1782,6 +1783,7 @@ bones/0/rest = Transform3D(0.059585154, 0.9981355, -0.0132314265, 0.951745, -0.0
 bones/0/enabled = true
 bones/0/position = Vector3(-0.4740218, 0.80381286, 0.30589914)
 bones/0/rotation = Quaternion(0.7406429, 0.44564304, 0.32319722, -0.38521934)
+bones/0/rotation = Quaternion(0.76892436, 0.41620386, 0.3436504, -0.34268665)
 bones/0/scale = Vector3(1, 0.99999994, 1)
 bones/1/name = "mixamorig_RightForeArm"
 bones/1/parent = 0
@@ -1789,6 +1791,7 @@ bones/1/rest = Transform3D(0.97153914, 0.2368427, -0.0041671097, -0.23687929, 0.
 bones/1/enabled = true
 bones/1/position = Vector3(-1.1923711e-07, 0.25746587, 4.1770454e-09)
 bones/1/rotation = Quaternion(0.4575315, -0.051288527, -0.079201944, 0.8841728)
+bones/1/rotation = Quaternion(0.5617693, -0.05119798, -0.10090708, 0.81951934)
 bones/1/scale = Vector3(1, 1.0000004, 1)
 bones/2/name = "mixamorig_RightHand"
 bones/2/parent = 1
@@ -1963,6 +1966,9 @@ metadata/_custom_type_script = "uid://ur4y2xplls64"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="barrel/TrashHitbox" unique_id=502902249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5073242, 0)
 shape = SubResource("CylinderShape3D_tn1tw")
+
+[node name="Godot_Model" parent="." unique_id=1465761995 instance=ExtResource("8_b1qrp")]
+transform = Transform3D(-4.3711387e-10, -0.0040015765, 0.009164463, 0, 0.009164463, 0.0040015765, -0.01, 1.7491446e-10, -4.005914e-10, -0.24970873, -0.12278715, 0.024374653)
 
 [connection signal="finished" from="Musics" to="." method="_on_audio_stream_player_finished"]
 [connection signal="on_customer_not_ready" from="GameManager" to="GameManager" method="_on_on_customer_not_ready"]
