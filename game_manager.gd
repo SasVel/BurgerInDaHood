@@ -208,7 +208,7 @@ func end_day() -> void:
 	print("Day ", day, " ended!")
 	print("Reputation: ", reputation)
 	await save_game_state()
-	SceneTransition.change_scene("res://BetweenDays.tscn")
+	SceneTransition.change_scene("res://UI/BetweenDays.tscn")
 
 func order_failed():
 	if not customer_ready:
