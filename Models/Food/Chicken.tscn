@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://ca57lobullqp7"]
 
 [ext_resource type="Script" uid="uid://br165gqvbv3lw" path="res://Components/item.gd" id="1_368ie"]
-[ext_resource type="ArrayMesh" uid="uid://dradhi1w2knae" path="res://Models/Food/Chicken.obj" id="2_3cu5o"]
+[ext_resource type="ArrayMesh" uid="uid://c4fet1pvcqth6" path="res://Models/Food/Chicken.obj" id="2_3cu5o"]
+[ext_resource type="Texture2D" uid="uid://brwl0g0cjrexw" path="res://Models/Textures/Crust_2.jpg" id="2_epyww"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tn1tw"]
 radius = 0.28125
 height = 1.3076172
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uo40c"]
+albedo_texture = ExtResource("2_epyww")
 
 [node name="Item6" type="StaticBody3D" unique_id=468894367 node_paths=PackedStringArray("item_mesh")]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
@@ -20,4 +24,5 @@ shape = SubResource("CapsuleShape3D_tn1tw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2068257890]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_uo40c")
 mesh = ExtResource("2_3cu5o")

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dvheiribej6dv"]
+
+[ext_resource type="PackedScene" uid="uid://bp8yjsy5fi2t6" path="res://Components/item.tscn" id="1_0g7xf"]
+[ext_resource type="ArrayMesh" uid="uid://dnada0xelloao" path="res://Models/Food/Cheeseburger.obj" id="2_iqaoi"]
+[ext_resource type="Texture2D" uid="uid://b2cpr3wrbgaab" path="res://Models/Textures/atlas1.png" id="2_vfcqh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vfcqh"]
+radius = 0.033203125
+height = 0.075912476
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3enw"]
+albedo_texture = ExtResource("2_vfcqh")
+
+[node name="CheeseBurger" unique_id=1865677289 node_paths=PackedStringArray("item_mesh") instance=ExtResource("1_0g7xf")]
+item_mesh = NodePath("Cheeseburger")
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=758932895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010344908, 0)
+shape = SubResource("CapsuleShape3D_vfcqh")
+
+[node name="Cheeseburger" type="MeshInstance3D" parent="." index="1" unique_id=2078120316]
+transform = Transform3D(0.07, 0, 0, 0, 0.06998885, -0.0012493999, 0, 0.0012493999, 0.06998885, 0.009366751, -0.019774288, 0)
+material_override = SubResource("StandardMaterial3D_x3enw")
+mesh = ExtResource("2_iqaoi")
