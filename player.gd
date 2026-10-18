@@ -45,6 +45,8 @@ func handleRotation(delta):
 		rotation.y -= turn_speed * delta
 
 func _input(event):
+	if forced_death:
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		hand_state_machine.travel("hand_interact")
 		var mouse_pos = get_viewport().get_mouse_position()

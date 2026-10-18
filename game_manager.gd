@@ -41,7 +41,6 @@ var current_customer: Customer = null
 var current_order: Array = []
 var order_info_arr : Array
 var is_evil: bool = false
-var has_pulled_gun: bool = false
 var order_time_left: float = 0.0
 var order_timer_running: bool = false
 
@@ -99,7 +98,7 @@ func _on_customer_interaction(item):
 		return
 	if item.is_gun:
 		kill_customer()
-	elif not has_pulled_gun:
+	elif not is_evil:
 		progress_customer_order(item)
 	#TODO
 
@@ -110,16 +109,6 @@ func _on_player_turned_to_customer():
 		return
 	if not is_evil:
 		return
-	if has_pulled_gun:
-		return
-	var reputation_percent = float(reputation) / MAX_REP
-	var gun_chance = max(1-reputation_percent,.05)
-	if randf() < gun_chance:
-		pull_gun()
-
-func pull_gun():
-	has_pulled_gun = true
-	print("customer pulled a gun")
 
 func start_day() -> void:
 	day += 1
@@ -248,11 +237,9 @@ func complete_customer_order() -> void:
 func kill_customer() -> void:
 	if not is_instance_valid(current_customer) or not customer_ready:
 		return
-	if is_evil and has_pulled_gun:
+	if is_evil:
 		reputation = reputation+2
 		red_effect.deactivate()
-	elif is_evil:
-		reputation = reputation-10
 	else:
 		reputation = reputation-20
 	customer_ready = false
