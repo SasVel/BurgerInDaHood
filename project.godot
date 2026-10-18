@@ -13,7 +13,7 @@ config_version=5
 config/name="BurgerInDaHood"
 run/main_scene="uid://diw3idhmeiccm"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://ilhh4x01vq6"
 
 [autoload]
 
