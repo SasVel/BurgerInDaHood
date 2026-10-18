@@ -30,4 +30,7 @@ func tween_activate():
 	tween.tween_property(item_mesh, "scale", item_mesh.scale * Vector3(0.8, 0.8, 1.4), 0.2)
 	tween.tween_property(item_mesh, "scale", initial_scale, 0.1)
 	await tween.finished
+	is_picked_up = false
+	self.global_position = initial_pos
+	self.global_rotation = initial_rot
 	is_tweening = false

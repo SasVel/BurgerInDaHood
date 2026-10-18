@@ -52,6 +52,7 @@ func _input(event):
 				if held_item == null: return
 				await held_item.tween_activate()
 				customer_interaction.emit(held_item)
-				if !held_item.is_gun: held_item.queue_free()
+				held_item = null
+				#if !held_item.is_gun: held_item.queue_free()
 		else:
 			print("You clicked on nothing")
