@@ -20,7 +20,14 @@
 [ext_resource type="PackedScene" uid="uid://bngver2rcr5n2" path="res://Models/ShelvesObjects/ShelvesWall.glb" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://bp8yjsy5fi2t6" path="res://Components/item.tscn" id="10_w48qg"]
 [ext_resource type="Texture2D" uid="uid://b2cpr3wrbgaab" path="res://Models/Textures/atlas1.png" id="20_getpj"]
+[ext_resource type="PackedScene" uid="uid://ca57lobullqp7" path="res://Models/Food/Chicken.tscn" id="20_qsp4k"]
+[ext_resource type="PackedScene" uid="uid://uk6tmpqy2cdh" path="res://Models/Food/Fries.tscn" id="21_kq58d"]
 [ext_resource type="ArrayMesh" uid="uid://knp26srt41wt" path="res://Models/Food/Cheeseburger.obj" id="21_ryguw"]
+[ext_resource type="PackedScene" uid="uid://c8efbmuyf5t5a" path="res://Models/Food/Onions.tscn" id="22_xuqvo"]
+[ext_resource type="PackedScene" uid="uid://7f7ald3kidi" path="res://Models/Food/Hamburger.tscn" id="24_jq2sk"]
+[ext_resource type="PackedScene" uid="uid://dftq6jui7cuou" path="res://Models/Food/Water.tscn" id="25_4k2k6"]
+[ext_resource type="PackedScene" uid="uid://dgm0m23c3agyo" path="res://Models/Food/Milk.tscn" id="26_0rl1p"]
+[ext_resource type="PackedScene" uid="uid://up7oslserdg3" path="res://Models/ShelvesObjects/Shelves.tscn" id="28_xuqvo"]
 
 [sub_resource type="Environment" id="Environment_7kkhm"]
 ambient_light_color = Color(0.33031926, 0.19907245, 0.086007796, 1)
@@ -1623,14 +1630,14 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(0.059585154, 0.9981355, -0.0132314265, 0.951745, -0.052808285, 0.30231225, 0.3010499, -0.030606255, -0.95311713, -0.4740218, 0.80381286, 0.30589914)
 bones/0/enabled = true
 bones/0/position = Vector3(-0.4740218, 0.80381286, 0.30589914)
-bones/0/rotation = Quaternion(0.7414847, 0.44483218, 0.32379448, -0.3840339)
+bones/0/rotation = Quaternion(0.7511189, 0.43528336, 0.33067814, -0.37013614)
 bones/0/scale = Vector3(1, 0.99999994, 1)
 bones/1/name = "mixamorig_RightForeArm"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0.97153914, 0.2368427, -0.0041671097, -0.23687929, 0.97138906, -0.017092636, -3.5762787e-07, 0.017593268, 0.9998453, -1.1923711e-07, 0.25746587, 4.1770454e-09)
 bones/1/enabled = true
 bones/1/position = Vector3(-1.1923711e-07, 0.25746587, 4.1770454e-09)
-bones/1/rotation = Quaternion(0.4606036, -0.051297016, -0.07983817, 0.8825185)
+bones/1/rotation = Quaternion(0.4959364, -0.051347803, -0.08717005, 0.86244535)
 bones/1/scale = Vector3(1, 1.0000004, 1)
 bones/2/name = "mixamorig_RightHand"
 bones/2/parent = 1
@@ -1700,7 +1707,7 @@ unique_name_in_owner = true
 script = ExtResource("5_efxa6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1199503585]
-transform = Transform3D(1, 0, 0, 0, 0.7554458, 0.65521115, 0, -0.65521115, 0.7554458, 0, 0.92794234, 0)
+transform = Transform3D(0.9852315, -0.11219028, 0.12935321, 0, 0.7554458, 0.65521115, -0.17122766, -0.6455347, 0.744289, 0.18305859, 0.92794234, 0.0062571764)
 
 [node name="CustomerHitbox" type="StaticBody3D" parent="." unique_id=884072015]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10167116, 0.14855337)
@@ -1739,8 +1746,26 @@ transform = Transform3D(-3.934025e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.934025e-08
 
 [node name="Node" type="Node" parent="." unique_id=1771162080]
 
+[node name="Item6" parent="." unique_id=468894367 instance=ExtResource("20_qsp4k")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, -0.23165642, 0.04185818, 0.11177883)
+
+[node name="Item5" parent="." unique_id=1582147228 instance=ExtResource("21_kq58d")]
+transform = Transform3D(-0.0018352816, 0, 0.19999158, 0, 0.19999999, 0, -0.19999158, 0, -0.0018352816, -0.23237205, 0.025466803, 0.07324208)
+
+[node name="Item8" parent="." unique_id=940356636 instance=ExtResource("22_xuqvo")]
+transform = Transform3D(0.017967394, 0.14216542, 0.2635643, 0.014383561, 0.26332384, -0.14301623, -0.2991157, 0.021202084, 0.00895465, -0.2410549, -0.08757641, 0.020330582)
+
+[node name="Item4" parent="." unique_id=1191479078 instance=ExtResource("24_jq2sk")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.22328894, 0.021531552, 0.008782536)
+
+[node name="Item7" parent="." unique_id=109674291 instance=ExtResource("25_4k2k6")]
+transform = Transform3D(-0.0052487957, -0.10741284, 0.28006235, -0.0020127331, 0.28011155, 0.10739398, -0.29994726, -5.587935e-09, -0.005621473, -0.24385811, 0.046748415, -0.062006734)
+
+[node name="Item3" parent="." unique_id=149774104 instance=ExtResource("26_0rl1p")]
+transform = Transform3D(-0.005621487, 0, 0.29994732, 0, 0.29999998, 0, -0.29994732, 0, -0.005621487, -0.23241557, -0.086343594, -0.06200675)
+
 [node name="Item2" parent="." unique_id=1865677289 node_paths=PackedStringArray("item_mesh") instance=ExtResource("10_w48qg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6946553, 0, 0)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.21629532, 0.03980188, 0.1856269)
 item_mesh = NodePath("Cheeseburger")
 
 [node name="CollisionShape3D" parent="Item2" index="0" unique_id=758932895]
@@ -1751,6 +1776,9 @@ shape = SubResource("CapsuleShape3D_d13ii")
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, -0.03554514)
 material_override = SubResource("StandardMaterial3D_1u8w0")
 mesh = ExtResource("21_ryguw")
+
+[node name="Node3D" parent="." unique_id=1225234852 instance=ExtResource("28_xuqvo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.20497477, -2.9802322e-08, 0.06466706)
 
 [editable path="Item"]
 [editable path="Item2"]
