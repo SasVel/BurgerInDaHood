@@ -42,7 +42,7 @@ func gen_listing(arr) -> Array:
 func gen_order_dialog(arr)->Array:
 	var result = "";
 	
-	result += Const.StartSentArr.pick_random() + Const.OrderSentArr.pick_random()
+	result += Const.OrderSentArr.pick_random()
 	
 	var order_size = arr.size();
 	var generated_arr = gen_listing(arr)

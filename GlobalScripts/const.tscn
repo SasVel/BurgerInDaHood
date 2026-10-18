@@ -7,7 +7,7 @@ script = ExtResource("1_1en5a")
 ItemsSlangDict = Dictionary[int, Array]({
 0: ["cheese burger sammich", "cheese sarnie", "cheese bomb", "cheese patty", "burger"],
 1: ["pork roll", "ham patty", "burger, ham-style", "hammy burger", "ham cake"],
-2: ["fillet tarters", "fries", "frenchie's", "ham cake"],
+2: ["fillet tarters", "fries", "frenchie's"],
 3: ["oil canakes", "onion rings", "onion circles", "onion bhajis"],
 4: ["chicken wings", "cluckin' wings", "wing-tangs", "wingers"],
 5: ["thick shake", "shake milk", "shake, milky-style", "shake"],
