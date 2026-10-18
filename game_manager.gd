@@ -7,18 +7,22 @@ const MAX_REP = 100
 const ORDER_TIME = 60.0
 const CUSTOMER_DISTANCE = .56
 const DAY_TIME = 240
+
 @onready var player: Node3D = %Player
 @onready var order_time_progress_bar: TextureProgressBar = %OrderTimeProgressBar
 @onready var day_clock: Label = %DayClock
-@onready var reputation = MAX_REP :
-	set(val):
-		reputation = clamp(val, 0, MAX_REP)
-		if reputation == 0:
-			no_rep_reached.emit()
-		elif reputation == MAX_REP:
-			max_rep_reached.emit()
 
-var day: int = 0
+@onready var reputation = GameState.reputation :
+	set(val):
+		GameState.reputation = clamp(val, 0, MAX_REP)
+		if GameState.reputation == 0:
+			no_rep_reached.emit()
+		elif GameState.reputation == MAX_REP:
+			max_rep_reached.emit()
+	get():
+		return GameState.reputation
+@onready var day: int = GameState.day
+@onready var profits: float = GameState.profits
 var time_left: float = 0.0
 
 var day_running: bool = false
@@ -175,6 +179,7 @@ func progress_customer_order(item : Item):
 func complete_customer_order() -> void:
 	if not is_instance_valid(current_customer) or not customer_ready:
 		return
+	profits += 10
 	reputation = reputation + 2
 	await despawn_customer()
 	spawn_next_customer()
@@ -202,6 +207,8 @@ func end_day() -> void:
 	await despawn_customer()
 	print("Day ", day, " ended!")
 	print("Reputation: ", reputation)
+	await save_game_state()
+	SceneTransition.change_scene("res://BetweenDays.tscn")
 
 func order_failed():
 	if not customer_ready:
@@ -222,5 +229,11 @@ func update_customer_dialogue(gen_arr):
 	customer_dialogue_box.fill_text(gen_arr)
 
 func hide_customer_dialogue():
+	customer_dialogue_box.visible = false
 	customer_dialogue_box.fade_out()
 	customer_dialogue_box.clear_text()
+
+func save_game_state():
+	GameState.day = day
+	GameState.reputation = reputation
+	GameState.profits = profits
