@@ -147,3 +147,70 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=41260434]
 transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, 0, 0, 0)
 mesh = SubResource("ArrayMesh_fraij")
+
+[node name="Label3D7" type="Label3D" parent="." unique_id=999979821]
+transform = Transform3D(5, 0, 0, 0, 1.875, 0, 0, 0, 0.313, 0.12127918, -0.13371137, 0.009964099)
+pixel_size = 0.0001
+text = "Milk"
+font_size = 31
+outline_size = 7
+width = 10.0
+
+[node name="Label3D7" type="Label3D" parent="Label3D7" unique_id=1455141889]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -0.017014742, -0.00017429888, -0.0067219697)
+pixel_size = 0.0001
+text = "Onion
+Rings"
+font_size = 31
+outline_size = 7
+width = 10.0
+
+[node name="Label3D6" type="Label3D" parent="." unique_id=1890083169]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 1, 0.120873556, -0.0029683486, 0.010752876)
+pixel_size = 0.0001
+text = "Water"
+font_size = 31
+outline_size = 7
+width = 10.0
+
+[node name="Label3D4" type="Label3D" parent="." unique_id=1239802824]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 1, 0.039097875, -0.0023976266, 0.008104072)
+pixel_size = 0.0001
+text = "Ham
+Burger"
+font_size = 31
+outline_size = 7
+width = 10.0
+
+[node name="Label3D3" type="Label3D" parent="." unique_id=141586288]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 1, -0.011103883, -0.0022597164, 0.0067796693)
+pixel_size = 0.0001
+text = "Fries"
+font_size = 31
+outline_size = 7
+width = 10.0
+
+[node name="Label3D2" type="Label3D" parent="." unique_id=55240882]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 1, -0.061305642, -0.0011298582, 0.005455267)
+pixel_size = 0.0001
+text = "Chicken"
+font_size = 31
+outline_size = 7
+width = 10.0
+
+[node name="Label3D" type="Label3D" parent="." unique_id=452590775]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 1, -0.1115074, 0, 0.006730194)
+pixel_size = 0.0001
+text = "Cheese
+Burger"
+font_size = 31
+outline_size = 7
+width = 10.0
+
+[node name="Label3D8" type="Label3D" parent="." unique_id=491062676]
+transform = Transform3D(5, 0, 0, 0, 1.875, 0, 0, 0, 0.313, -0.06624469, -0.13371137, 0.009964091)
+pixel_size = 0.0001
+text = "VGhlIEdsaXRjaA=="
+font_size = 31
+outline_size = 7
+width = 10.0
