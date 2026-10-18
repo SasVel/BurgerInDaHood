@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://besk0ootwds1s"]
 
 [ext_resource type="Script" uid="uid://cstecblb6ene4" path="res://UI/game_over.gd" id="1_kjexa"]
+[ext_resource type="Texture2D" uid="uid://5d35qay61c0y" path="res://Shared/death_skull.png" id="2_vjbsa"]
 
 [node name="GameOver" type="Control" unique_id=1379193984]
 layout_mode = 3
@@ -43,17 +44,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -143.5
-offset_top = -290.0
-offset_right = 149.5
-offset_bottom = -225.0
+offset_left = -145.5
+offset_top = -438.0
+offset_right = 147.5
+offset_bottom = -373.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 32
-text = "Main Menu"
+text = "Go Again"
 
 [node name="DayCount" type="Label" parent="Panel" unique_id=1001449100]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -74,15 +76,43 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -143.5
-offset_top = -422.0
-offset_right = 149.5
-offset_bottom = -357.0
+offset_left = -148.5
+offset_top = -293.0
+offset_right = 144.5
+offset_bottom = -228.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 32
-text = "Go Again"
+text = "Main Menu"
+
+[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=1499225157]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -501.0
+offset_top = -471.0
+offset_right = -245.0
+offset_bottom = -215.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_vjbsa")
+
+[node name="TextureRect2" type="TextureRect" parent="Panel" unique_id=1736628120]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 513.0
+offset_top = -473.0
+offset_right = 769.0
+offset_bottom = -217.0
+grow_vertical = 0
+scale = Vector2(-1, 1)
+texture = ExtResource("2_vjbsa")
 
 [connection signal="pressed" from="Panel/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="Panel/MainMenu" to="." method="_on_main_menu_pressed"]
