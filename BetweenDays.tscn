@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://6i5vmjdyxbjj"]
+[gd_scene format=3 uid="uid://dwdr1lukm5s1y"]
 
-[ext_resource type="Script" path="res://between_days.gd" id="1_37xsp"]
+[ext_resource type="Script" uid="uid://djped66brpjmq" path="res://between_days.gd" id="1_37xsp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_orke6"]
 font_size = 128
