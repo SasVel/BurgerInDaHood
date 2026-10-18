@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://diw3idhmeiccm"]
 
 [ext_resource type="Script" uid="uid://d28rgnvmriu0t" path="res://UI/main_menu.gd" id="1_uahxu"]
+[ext_resource type="AudioStream" uid="uid://cdkk3safeqnrg" path="res://MusicAndSFX/Music/Car Theft 101.ogg" id="2_b37jj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eiy7p"]
 font_size = 128
@@ -13,6 +14,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uahxu")
+
+[node name="Musics" type="AudioStreamPlayer" parent="." unique_id=2044054961]
+unique_name_in_owner = true
+stream = ExtResource("2_b37jj")
+autoplay = true
 
 [node name="Panel" type="Panel" parent="." unique_id=673184099]
 layout_mode = 1
@@ -81,6 +87,7 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 32
 text = "Credits"
 
+[connection signal="finished" from="Musics" to="." method="_on_musics_finished"]
 [connection signal="pressed" from="Panel/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Panel/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Panel/Credits" to="." method="_on_credits_pressed"]
