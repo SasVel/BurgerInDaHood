@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://br165gqvbv3lw" path="res://Components/item.gd" id="1_qriis"]
 [ext_resource type="Texture2D" uid="uid://b2cpr3wrbgaab" path="res://Models/Textures/atlas1.png" id="2_eekw4"]
+[ext_resource type="AudioStream" uid="uid://baqso04pefx4f" path="res://MusicAndSFX/SFX/grab/foley_object_grab_pickup_04.wav" id="3_as6ta"]
+[ext_resource type="AudioStream" uid="uid://don7my6clfipc" path="res://MusicAndSFX/SFX/grab/foley_sports_bag_grab_pickup_catch_04.wav" id="4_6u6gm"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_naks7"]
-height = 0.2732544
-radius = 0.05078125
+height = 0.09559631
+radius = 0.022949219
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6u6gm"]
 albedo_texture = ExtResource("2_eekw4")
@@ -48,6 +50,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kxrb6")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_etde2"]
+random_pitch = 1.0293022
+streams_count = 2
+stream_0/stream = ExtResource("3_as6ta")
+stream_1/stream = ExtResource("4_6u6gm")
+
 [node name="Soda" type="StaticBody3D" unique_id=1356579013 node_paths=PackedStringArray("item_mesh")]
 script = ExtResource("1_qriis")
 type = 7
@@ -55,9 +63,14 @@ item_mesh = NodePath("MeshInstance3D")
 metadata/_custom_type_script = "uid://br165gqvbv3lw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=181790340]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.123931885, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04573822, 0)
 shape = SubResource("CylinderShape3D_naks7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1513356757]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_6u6gm")
 mesh = SubResource("ArrayMesh_naks7")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=593610820]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_etde2")

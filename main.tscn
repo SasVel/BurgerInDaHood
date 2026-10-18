@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://dgm0m23c3agyo" path="res://Models/Food/Milk.tscn" id="26_0rl1p"]
 [ext_resource type="PackedScene" uid="uid://dvheiribej6dv" path="res://Models/Food/cheese_burger.tscn" id="27_a6jrf"]
 [ext_resource type="PackedScene" uid="uid://up7oslserdg3" path="res://Models/ShelvesObjects/Shelves.tscn" id="28_xuqvo"]
+[ext_resource type="PackedScene" uid="uid://5s0n8h2tfu7v" path="res://Models/Food/soda.tscn" id="34_4k2k6"]
 
 [sub_resource type="Environment" id="Environment_7kkhm"]
 ambient_light_color = Color(0.33031926, 0.19907245, 0.086007796, 1)
@@ -1735,14 +1736,14 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(0.059585154, 0.9981355, -0.0132314265, 0.951745, -0.052808285, 0.30231225, 0.3010499, -0.030606255, -0.95311713, -0.4740218, 0.80381286, 0.30589914)
 bones/0/enabled = true
 bones/0/position = Vector3(-0.4740218, 0.80381286, 0.30589914)
-bones/0/rotation = Quaternion(0.7172436, 0.46683705, 0.30682692, -0.41651192)
+bones/0/rotation = Quaternion(0.7618369, 0.4240382, 0.33844495, -0.3539085)
 bones/0/scale = Vector3(1, 0.99999994, 1)
 bones/1/name = "mixamorig_RightForeArm"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0.97153914, 0.2368427, -0.0041671097, -0.23687929, 0.97138906, -0.017092636, -3.5762787e-07, 0.017593268, 0.9998453, -1.1923711e-07, 0.25746587, 4.1770454e-09)
 bones/1/enabled = true
 bones/1/position = Vector3(-1.1923711e-07, 0.25746587, 4.1770454e-09)
-bones/1/rotation = Quaternion(0.3733915, -0.050824083, -0.06184887, 0.92421347)
+bones/1/rotation = Quaternion(0.53551406, -0.051297985, -0.095416054, 0.8375494)
 bones/1/scale = Vector3(1, 1.0000004, 1)
 bones/2/name = "mixamorig_RightHand"
 bones/2/parent = 1
@@ -1903,7 +1904,10 @@ transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, -0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23375331, 0.0436987, 0.14838833)
 
 [node name="Shelves" parent="." unique_id=396342033 instance=ExtResource("28_xuqvo")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.20497477, -2.9802322e-08, 0.06466706)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.20515746, 0.0004592687, 0.06460595)
+
+[node name="Soda" parent="." unique_id=1356579013 instance=ExtResource("34_4k2k6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23076539, -0.16796358, 0.12913424)
 
 [connection signal="finished" from="Musics" to="." method="_on_audio_stream_player_finished"]
 [connection signal="animation_finished" from="CustomerHitbox/CustomerBonusAnims" to="GameManager" method="_on_customer_bonus_anims_animation_finished"]

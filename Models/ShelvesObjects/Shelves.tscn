@@ -208,9 +208,9 @@ outline_size = 7
 width = 10.0
 
 [node name="Label3D8" type="Label3D" parent="." unique_id=491062676]
-transform = Transform3D(5, 0, 0, 0, 1.875, 0, 0, 0, 0.313, -0.06624469, -0.13371137, 0.009964091)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.06624469, -0.13371137, 0.009964091)
 pixel_size = 0.0001
-text = "VGhlIEdsaXRjaA=="
-font_size = 31
-outline_size = 7
+text = "Soda"
+font_size = 45
+outline_size = 9
 width = 10.0
