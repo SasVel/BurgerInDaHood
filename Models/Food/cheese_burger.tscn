@@ -11,7 +11,8 @@ height = 0.075912476
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3enw"]
 albedo_texture = ExtResource("2_vfcqh")
 
-[node name="CheeseBurger" unique_id=1865677289 instance=ExtResource("1_0g7xf")]
+[node name="CheeseBurger" unique_id=1865677289 node_paths=PackedStringArray("item_mesh") instance=ExtResource("1_0g7xf")]
+item_mesh = NodePath("Cheeseburger")
 
 [node name="CollisionShape3D" parent="." index="0" unique_id=758932895]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010344908, 0)
