@@ -72,7 +72,7 @@ func _physics_process(delta: float) -> void:
 		order_failed()
 
 func _on_customer_interaction(item):
-	if item == null:
+	if item == null or not customer_ready:
 		return
 	if item.is_gun:
 		kill_customer()

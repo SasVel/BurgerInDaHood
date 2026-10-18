@@ -44,12 +44,13 @@ func _input(event):
 		if result:
 			var object = result.collider
 			print("You clicked on: ", object.name)
+			if held_item == null: return
+
 			if object is Item and object != held_item:
 				held_item = object
 				held_item.pick_up(%HandMarker)
 				print("You clicked on an item!")
 			elif object is CustomerHitbox:
-				if held_item == null: return
 				object.activate(held_item)
 				await held_item.activate()
 				customer_interaction.emit(held_item)
