@@ -171,6 +171,7 @@ func spawn_next_customer() -> void:
 	current_customer.position = Vector3(2, -0.7, -CUSTOMER_DISTANCE)
 	current_customer.rotation = Vector3(0, -PI, 0)
 	var tween = create_tween()
+	#var bounce_tween = create_tween().set_loops()
 	tween.tween_property(current_customer,"position",Vector3(0, -.7, -CUSTOMER_DISTANCE),2.0)
 	tween.tween_property(current_customer,"rotation:y",current_customer.rotation.y + PI/2,0.5)
 	await tween.finished

@@ -7,7 +7,10 @@
 script = ExtResource("2_6mrm7")
 anim_player = NodePath("AnimationPlayer")
 
-[node name="Skeleton3D" parent="Man_05" parent_id_path=PackedInt32Array(1665176997) index="0" unique_id=552098262]
+[node name="Man_05" parent="." index="0" unique_id=1665176997]
+transform = Transform3D(-4.371139e-08, 1, 0, 0, 0, -1, -1, -4.371139e-08, 0, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Man_05" index="0" unique_id=552098262]
 bones/0/position = Vector3(0.0062023215, 0.0009682563, -0.91929287)
 bones/0/rotation = Quaternion(-0.50016516, -0.5001548, 0.49983546, 0.4998445)
 bones/1/rotation = Quaternion(-0.00028262497, -0.061654434, 0.986853, -0.14939848)
@@ -37,3 +40,6 @@ bones/28/rotation = Quaternion(0.08262167, -0.0053773196, -0.070322424, 0.994082
 bones/29/rotation = Quaternion(0.13858587, 0.016827414, 0.15986224, 0.9772179)
 bones/30/rotation = Quaternion(0.053950723, 0.00484419, -0.1831195, 0.98159724)
 bones/31/rotation = Quaternion(0.24662411, 0.020702152, -0.060352683, 0.9670086)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=1547254852]
+autoplay = &"idle"

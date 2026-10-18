@@ -6,5 +6,6 @@
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
 
 [node name="Label3D" type="Label3D" parent="." index="1" unique_id=245740739]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.41407314, 0.6380397, 5.801703e-09)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.41407314, 0.8814003, -0.23611736)
+billboard = 1
 text = "TRASH"
