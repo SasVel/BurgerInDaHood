@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://hlth0vgggdbi" path="res://Models/Shared/Hand_Character_02.png" id="3_dg77c"]
 [ext_resource type="PackedScene" uid="uid://gt05gwg4l8qp" path="res://Models/RegisterObjects/Desk.glb" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://dmbvwt2ig648k" path="res://UI/customer_dialogue_box.gd" id="3_yaehf"]
-[ext_resource type="PackedScene" uid="uid://dxrxgtdja08bv" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bvj0uoghp02q3" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://d3ekpth3rfscc" path="res://label.gd" id="4_cegan"]
 [ext_resource type="Animation" uid="uid://bkh5ptus0lv6j" path="res://Models/Shared/HandAnimations/hand_idle.anim" id="4_dg77c"]
 [ext_resource type="Script" uid="uid://cftidvm2gvh4r" path="res://helper_functions.gd" id="5_efxa6"]
@@ -97,6 +97,9 @@ fill_from = Vector2(0.5, 0.5)
 font_size = 64
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7kkhm"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
 shader = ExtResource("1_272bh")
@@ -1456,9 +1459,12 @@ bus = &"Music"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1972210199]
 environment = SubResource("Environment_7kkhm")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=1784491341]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=82082961]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
 
-[node name="MainControl" type="Control" parent="UI" unique_id=610036546]
+[node name="MainControl" type="Control" parent="SubViewport" unique_id=1501933095]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1468,7 +1474,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_2cqfq")
 
-[node name="CustomerDialogueBox" type="Control" parent="UI/MainControl" unique_id=730675883]
+[node name="CustomerDialogueBox" type="Control" parent="SubViewport/MainControl" unique_id=1774384425]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1477,7 +1483,7 @@ grow_horizontal = 2
 mouse_filter = 2
 script = ExtResource("3_yaehf")
 
-[node name="PanelContainer" type="Panel" parent="UI/MainControl/CustomerDialogueBox" unique_id=1798888438]
+[node name="PanelContainer" type="Panel" parent="SubViewport/MainControl/CustomerDialogueBox" unique_id=275079471]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1492,7 +1498,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yvrph")
 
-[node name="Panel" type="Panel" parent="UI/MainControl/CustomerDialogueBox/PanelContainer" unique_id=421409604]
+[node name="Panel" type="Panel" parent="SubViewport/MainControl/CustomerDialogueBox/PanelContainer" unique_id=1117815239]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1509,7 +1515,7 @@ rotation = 0.7853982
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_7kkhm")
 
-[node name="Panel2" type="Panel" parent="UI/MainControl/CustomerDialogueBox/PanelContainer" unique_id=1051055443]
+[node name="Panel2" type="Panel" parent="SubViewport/MainControl/CustomerDialogueBox/PanelContainer" unique_id=2120612242]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1525,7 +1531,7 @@ grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_074og")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/MainControl/CustomerDialogueBox/PanelContainer" unique_id=1335197183]
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/MainControl/CustomerDialogueBox/PanelContainer" unique_id=919567275]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -1533,7 +1539,7 @@ offset_right = 1485.0
 offset_bottom = 213.5
 metadata/_edit_lock_ = true
 
-[node name="Label" type="RichTextLabel" parent="UI/MainControl/CustomerDialogueBox/PanelContainer/MarginContainer" unique_id=731574978]
+[node name="Label" type="RichTextLabel" parent="SubViewport/MainControl/CustomerDialogueBox/PanelContainer/MarginContainer" unique_id=1849503901]
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
@@ -1542,7 +1548,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_cegan")
 
-[node name="OrderTimeProgressBar" type="TextureProgressBar" parent="UI/MainControl" unique_id=1970548954]
+[node name="OrderTimeProgressBar" type="TextureProgressBar" parent="SubViewport/MainControl" unique_id=744861436]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
@@ -1559,7 +1565,7 @@ fill_mode = 4
 texture_under = SubResource("GradientTexture2D_w48qg")
 texture_progress = SubResource("GradientTexture2D_36556")
 
-[node name="DayClock" type="Label" parent="UI/MainControl" unique_id=57701889]
+[node name="DayClock" type="Label" parent="SubViewport/MainControl" unique_id=1455870011]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
@@ -1575,6 +1581,14 @@ label_settings = SubResource("LabelSettings_w48qg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="UI2" type="Sprite3D" parent="." unique_id=5678287]
+transform = Transform3D(0.045, 0, 0, 0, 0.045, 0, 0, 0, 0.045, 0.06503632, 0.015133053, -0.3246987)
+billboard = 1
+texture = SubResource("ViewportTexture_7kkhm")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1784491341]
+follow_viewport_enabled = true
+
 [node name="Shaders" type="CanvasLayer" parent="." unique_id=617022070]
 layer = 2
 
@@ -1585,6 +1599,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="Vignette" type="ColorRect" parent="Shaders/Control" unique_id=1937809352]
@@ -1595,6 +1610,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="CRT" type="ColorRect" parent="Shaders/Control" unique_id=2037254379]
@@ -1605,6 +1621,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1226423632]
@@ -1641,14 +1658,14 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(0.059585154, 0.9981355, -0.0132314265, 0.951745, -0.052808285, 0.30231225, 0.3010499, -0.030606255, -0.95311713, -0.4740218, 0.80381286, 0.30589914)
 bones/0/enabled = true
 bones/0/position = Vector3(-0.4740218, 0.80381286, 0.30589914)
-bones/0/rotation = Quaternion(0.764242, 0.42141706, 0.34020483, -0.3501466)
+bones/0/rotation = Quaternion(0.72433233, 0.4606774, 0.31174058, -0.4073534)
 bones/0/scale = Vector3(1, 0.99999994, 1)
 bones/1/name = "mixamorig_RightForeArm"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0.97153914, 0.2368427, -0.0041671097, -0.23687929, 0.97138906, -0.017092636, -3.5762787e-07, 0.017593268, 0.9998453, -1.1923711e-07, 0.25746587, 4.1770454e-09)
 bones/1/enabled = true
 bones/1/position = Vector3(-1.1923711e-07, 0.25746587, 4.1770454e-09)
-bones/1/rotation = Quaternion(0.54441935, -0.051270325, -0.09727652, 0.8315747)
+bones/1/rotation = Quaternion(0.3985909, -0.05100881, -0.06703182, 0.9132526)
 bones/1/scale = Vector3(1, 1.0000004, 1)
 bones/2/name = "mixamorig_RightHand"
 bones/2/parent = 1
@@ -1711,7 +1728,7 @@ mesh = SubResource("BoxMesh_36556")
 [node name="GameManager" type="Node3D" parent="." unique_id=2116898195 node_paths=PackedStringArray("customer_dialogue_box")]
 unique_name_in_owner = true
 script = ExtResource("2_0xm2m")
-customer_dialogue_box = NodePath("../UI/MainControl/CustomerDialogueBox")
+customer_dialogue_box = NodePath("../SubViewport/MainControl/CustomerDialogueBox")
 
 [node name="HelperFunctions" type="Node3D" parent="GameManager" unique_id=535735836]
 unique_name_in_owner = true
