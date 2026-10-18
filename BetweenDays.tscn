@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://6i5vmjdyxbjj"]
+
+[ext_resource type="Script" path="res://between_days.gd" id="1_37xsp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_orke6"]
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_u24hj"]
+font_size = 32
+
+[node name="BetweenDays" type="Control" unique_id=1261638919]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_37xsp")
+
+[node name="Panel" type="Panel" parent="." unique_id=1184700308]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99700004
+anchor_bottom = 1.0
+offset_right = 0.7598877
+
+[node name="Profits" type="RichTextLabel" parent="Panel" unique_id=632836957]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -162.9925
+offset_top = 499.0
+offset_right = 159.0075
+offset_bottom = 587.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Profits: [color=green] 123$ [/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Day" type="Label" parent="Panel" unique_id=1663593721]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -87.99249
+offset_top = 37.0
+offset_right = 92.00751
+offset_bottom = 125.0
+grow_horizontal = 2
+text = "DAY 1"
+label_settings = SubResource("LabelSettings_orke6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rep" type="Label" parent="Panel" unique_id=1322511933]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.9925
+offset_top = 274.0
+offset_right = 157.0075
+offset_bottom = 362.0
+grow_horizontal = 2
+text = "Reputation: ☆☆☆☆☆"
+label_settings = SubResource("LabelSettings_u24hj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rent" type="RichTextLabel" parent="Panel" unique_id=730287511]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.9925
+offset_top = 618.0
+offset_right = 157.0075
+offset_bottom = 706.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Rent: [color=red] 100$ [/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Total" type="RichTextLabel" parent="Panel" unique_id=257344535]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -165.9925
+offset_top = 725.0
+offset_right = 156.0075
+offset_bottom = 813.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Total: [color=green] 46$ [/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Savings" type="RichTextLabel" parent="Panel" unique_id=43429140]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -167.9925
+offset_top = 389.0
+offset_right = 154.0075
+offset_bottom = 477.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Savings: [color=green] 23$ [/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextDayButton" type="Button" parent="Panel" unique_id=1622898278]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 805.0
+offset_top = 886.0
+offset_right = 1098.0
+offset_bottom = 951.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 32
+text = "Next Day -->"
+
+[connection signal="pressed" from="Panel/NextDayButton" to="." method="_on_next_day_button_pressed"]
