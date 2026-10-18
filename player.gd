@@ -58,5 +58,10 @@ func _input(event):
 				customer_interaction.emit(held_item)
 				held_item = null
 				#if !held_item.is_gun: held_item.queue_free()
+			elif object is TrashHitbox:
+				if held_item == null: return
+				object.activate(held_item)
+				await held_item.activate()
+				held_item = null
 		else:
 			print("You clicked on nothing")

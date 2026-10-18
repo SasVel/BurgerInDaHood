@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://q0hvlicyetcu"]
+
+[ext_resource type="PackedScene" uid="uid://b4af4mnai5wdw" path="res://Models/ShelvesObjects/barrel.glb" id="1_sg1r5"]
+
+[node name="barrel" unique_id=53863596 instance=ExtResource("1_sg1r5")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
+
+[node name="Label3D" type="Label3D" parent="." index="1" unique_id=245740739]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.41407314, 0.6380397, 5.801703e-09)
+text = "TRASH"
