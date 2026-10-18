@@ -4,17 +4,29 @@ signal customer_interaction(item)
 signal turned_to_customer
 signal picked_up_item
 
+
 @onready var camera = $Camera3D
 @export var turn_speed = 10
 const FRONT = 0
 const LEFT = -1
 var direction = FRONT
 var held_item : Item
+var forced_death = false
 @onready var hand_state_machine = %HandAnimTree.get("parameters/playback")
+@onready var game_manager: Node3D = %GameManager
+
+func _ready():
+	game_manager.on_forced_death.connect(_on_forced_death)
+
+func _on_forced_death():
+	direction = FRONT
+	forced_death = true
+	
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("turn_left"):
-		direction=max(direction-1, LEFT)
+		if not forced_death:
+			direction=max(direction-1, LEFT)
 	if Input.is_action_just_pressed("turn_right"):
 		direction=min(direction+1, FRONT)
 		turned_to_customer.emit()

@@ -6,7 +6,7 @@ extends Node
 @onready var money: float = 300
 
 func reset():
-	reputation = 100
+	reputation = 2
 	day= 0
 	profits = 0
 	money = 300

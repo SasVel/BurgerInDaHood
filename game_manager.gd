@@ -49,6 +49,7 @@ signal no_rep_reached
 
 signal on_customer_ready
 signal on_customer_not_ready
+signal on_forced_death
 
 func _ready() -> void:
 	print(Const.Items)
@@ -126,8 +127,31 @@ func start_day() -> void:
 	print("Day ", day, " started!")
 	spawn_next_customer()
 
+func forced_death() -> void:
+	customer_ready = false
+	on_forced_death.emit()
+	var customer = Res.customers.pick_random()
+	var instance = customer.instantiate()
+	current_customer = instance
+	add_child(current_customer)
+	current_customer.scale = Vector3(0.5, 0.5, 0.5)
+	current_customer.position = Vector3(2, -0.7, -CUSTOMER_DISTANCE)
+	current_customer.rotation = Vector3(0, -PI, 0)
+	var tween = create_tween()
+	tween.tween_property(current_customer,"position",Vector3(0, -.7, -CUSTOMER_DISTANCE),2.0)
+	tween.tween_property(current_customer,"rotation:y",current_customer.rotation.y + PI/2,0.5)
+	await tween.finished
+	await get_tree().create_timer(1).timeout
+	update_customer_dialogue_simple("Your days are numbered")
+	%CustomerBonusAnims.play("pull_gun")
+	await get_tree().create_timer(4).timeout
+	SceneTransition.change_scene("res://UI/GameOver.tscn")
+
 func spawn_next_customer() -> void:
 	if not day_running or is_instance_valid(current_customer):
+		return
+	if reputation <= 0:
+		forced_death()
 		return
 	var reputation_percent = float(reputation) / MAX_REP
 	var evil_chance = max(1-reputation_percent,.25)
