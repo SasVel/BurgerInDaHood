@@ -1,11 +1,26 @@
 [gd_scene format=3 uid="uid://bp8yjsy5fi2t6"]
 
 [ext_resource type="Script" uid="uid://br165gqvbv3lw" path="res://Components/item.gd" id="1_cbn0a"]
+[ext_resource type="AudioStream" uid="uid://baqso04pefx4f" path="res://MusicAndSFX/SFX/grab/foley_object_grab_pickup_04.wav" id="2_dvbk0"]
+[ext_resource type="AudioStream" uid="uid://don7my6clfipc" path="res://MusicAndSFX/SFX/grab/foley_sports_bag_grab_pickup_catch_04.wav" id="3_axmic"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o8s1y"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cbn0a"]
+random_pitch = 1.0293022
+streams_count = 2
+stream_0/stream = ExtResource("2_dvbk0")
+stream_1/stream = ExtResource("3_axmic")
 
 [node name="Item" type="StaticBody3D" unique_id=1865677289]
 script = ExtResource("1_cbn0a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=758932895]
 shape = SubResource("CapsuleShape3D_o8s1y")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=474934919]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_cbn0a")
+
+[node name="ActivatePlayer" type="AudioStreamPlayer3D" parent="." unique_id=85240101]
+unique_name_in_owner = true

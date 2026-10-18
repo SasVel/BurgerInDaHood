@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bniongcqno6th" path="res://player.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://ie3ho03ygqpn" path="res://game_manager.gd" id="2_0xm2m"]
 [ext_resource type="Theme" uid="uid://bsk1fyhloxt7b" path="res://Components/main_theme.tres" id="2_2cqfq"]
+[ext_resource type="AudioStream" uid="uid://bgcdg2bqj1n7y" path="res://MusicAndSFX/Music/Car Theft 101_LoFi.ogg" id="2_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://hlth0vgggdbi" path="res://Models/Shared/Hand_Character_02.png" id="3_dg77c"]
 [ext_resource type="PackedScene" uid="uid://gt05gwg4l8qp" path="res://Models/RegisterObjects/Desk.glb" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://dmbvwt2ig648k" path="res://UI/customer_dialogue_box.gd" id="3_yaehf"]
@@ -19,6 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://b4v5xwphf8sxe" path="res://Models/RegisterObjects/CashRegister.glb" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bngver2rcr5n2" path="res://Models/ShelvesObjects/ShelvesWall.glb" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://bp8yjsy5fi2t6" path="res://Components/item.tscn" id="10_w48qg"]
+[ext_resource type="AudioStream" uid="uid://bqisa6mbf0njb" path="res://MusicAndSFX/SFX/screaming/VOXScrm_Male in Shock 4_344 Audio_Screaming.wav" id="14_htxhm"]
+[ext_resource type="AudioStream" uid="uid://ctvtjvugqk3xu" path="res://MusicAndSFX/SFX/screaming/VOXScrm_Male Serial Killer Attacking 1_344 Audio_Screaming.wav" id="15_jq2sk"]
+[ext_resource type="AudioStream" uid="uid://squ682p4kadq" path="res://MusicAndSFX/SFX/grab/universfield-gun-reload-123781.mp3" id="17_qsp4k"]
+[ext_resource type="AudioStream" uid="uid://bgytb4ca0sssp" path="res://MusicAndSFX/SFX/rifle/M1918_Browning_Automatic_Rifle_.30cal_0.1m_to_right_Double_shots_x_1.wav" id="18_kq58d"]
 [ext_resource type="PackedScene" uid="uid://ca57lobullqp7" path="res://Models/Food/Chicken.tscn" id="20_qsp4k"]
 [ext_resource type="PackedScene" uid="uid://uk6tmpqy2cdh" path="res://Models/Food/Fries.tscn" id="21_kq58d"]
 [ext_resource type="PackedScene" uid="uid://c8efbmuyf5t5a" path="res://Models/Food/Onions.tscn" id="22_xuqvo"]
@@ -1430,12 +1435,23 @@ transitions = ["Start", "hand_idle", SubResource("AnimationNodeStateMachineTrans
 [sub_resource type="BoxShape3D" id="BoxShape3D_36556"]
 size = Vector3(0.1940155, 0.38964844, 0.34350586)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7kkhm"]
+random_pitch = 1.0293022
+streams_count = 2
+stream_0/stream = ExtResource("14_htxhm")
+stream_1/stream = ExtResource("15_jq2sk")
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vivmo"]
 radius = 0.04248047
 height = 0.34791565
 
 [node name="Main" type="Node3D" unique_id=1855453819]
 script = ExtResource("1_2cqfq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=870435629]
+stream = ExtResource("2_xuqvo")
+autoplay = true
+bus = &"Music"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1972210199]
 environment = SubResource("Environment_7kkhm")
@@ -1607,6 +1623,9 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.021568954, 0)
 script = ExtResource("1_ig7tw")
 
+[node name="AudioListener3D" type="AudioListener3D" parent="Player" unique_id=1912716723]
+current = true
+
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=2073357693]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02328816, 0)
 
@@ -1623,6 +1642,7 @@ bones/0/rest = Transform3D(0.059585154, 0.9981355, -0.0132314265, 0.951745, -0.0
 bones/0/enabled = true
 bones/0/position = Vector3(-0.4740218, 0.80381286, 0.30589914)
 bones/0/rotation = Quaternion(0.7477446, 0.43868512, 0.3282572, -0.3750743)
+bones/0/rotation = Quaternion(0.76637024, 0.41906586, 0.3417678, -0.3467784)
 bones/0/scale = Vector3(1, 0.99999994, 1)
 bones/1/name = "mixamorig_RightForeArm"
 bones/1/parent = 0
@@ -1630,6 +1650,7 @@ bones/1/rest = Transform3D(0.97153914, 0.2368427, -0.0041671097, -0.23687929, 0.
 bones/1/enabled = true
 bones/1/position = Vector3(-1.1923711e-07, 0.25746587, 4.1770454e-09)
 bones/1/rotation = Quaternion(0.4835289, -0.051339842, -0.08459239, 0.86971736)
+bones/1/rotation = Quaternion(0.55230415, -0.051240478, -0.09892555, 0.8261648)
 bones/1/scale = Vector3(1, 1.0000004, 1)
 bones/2/name = "mixamorig_RightHand"
 bones/2/parent = 1
@@ -1712,6 +1733,14 @@ script = ExtResource("7_ycdy4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00948596, 0.022949219, -0.9099499)
 shape = SubResource("BoxShape3D_36556")
 
+[node name="ScreamPlayer" type="AudioStreamPlayer3D" parent="CustomerHitbox" unique_id=2147059897]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_7kkhm")
+volume_db = 15.094
+max_db = 6.0
+panning_strength = 2.0
+bus = &"SFX"
+
 [node name="Desk" parent="." unique_id=2026969727 instance=ExtResource("3_h2yge")]
 transform = Transform3D(0.32364088, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.004626155, -0.3859299, -0.25735572)
 
@@ -1726,6 +1755,12 @@ item_mesh = NodePath("MP5")
 [node name="CollisionShape3D" parent="Item" index="0" unique_id=758932895]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.028985232, 0.04007721, 0)
 shape = SubResource("CapsuleShape3D_vivmo")
+
+[node name="AudioPlayer" parent="Item" index="1" unique_id=474934919]
+stream = ExtResource("17_qsp4k")
+
+[node name="ActivatePlayer" parent="Item" index="2" unique_id=85240101]
+stream = ExtResource("18_kq58d")
 
 [node name="MP5" parent="Item" unique_id=483942448 instance=ExtResource("5_lquwl")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0002693832, 5.5730343e-05, 0.00019556284)
@@ -1767,5 +1802,8 @@ transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, -0.0
 
 [node name="CheeseBurger" parent="." unique_id=1865677289 instance=ExtResource("27_a6jrf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23375331, 0.0436987, 0.14838833)
+
+[node name="Shelves" parent="." unique_id=1225234852 instance=ExtResource("28_xuqvo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.20497477, -2.9802322e-08, 0.06466706)
 
 [editable path="Item"]

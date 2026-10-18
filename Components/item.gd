@@ -16,14 +16,22 @@ func pick_up(pick_marker : Marker3D):
 	initial_rot = self.global_rotation
 	marker = pick_marker
 	is_picked_up = true
+	%AudioPlayer.play()
 
 func _physics_process(_delta: float) -> void:
 	if is_picked_up:
 		self.global_position = marker.global_position
 		self.global_rotation = marker.global_rotation
 
+func activate():
+	if !is_tweening:
+		tween_activate()
+	if is_gun:
+		%ActivatePlayer.play()
+	else:
+		%AudioPlayer.play()
+
 func tween_activate():
-	if is_tweening: return
 	is_tweening = true
 	var initial_scale = item_mesh.scale
 	var tween = create_tween()

@@ -22,3 +22,9 @@ shape = SubResource("CapsuleShape3D_vfcqh")
 transform = Transform3D(0.07, 0, 0, 0, 0.06998885, -0.0012493999, 0, 0.0012493999, 0.06998885, 0.009366751, -0.019774288, 0)
 material_override = SubResource("StandardMaterial3D_x3enw")
 mesh = ExtResource("2_iqaoi")
+
+[node name="AudioPlayer" parent="." index="2" unique_id=474934919]
+bus = &"SFX"
+
+[node name="ActivatePlayer" parent="." index="3" unique_id=85240101]
+bus = &"SFX"

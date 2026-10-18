@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://br165gqvbv3lw" path="res://Components/item.gd" id="1_wmixp"]
 [ext_resource type="ArrayMesh" uid="uid://decgvnbfitj6" path="res://Models/Food/Water.obj" id="2_0qmjo"]
 [ext_resource type="Texture2D" uid="uid://b2cpr3wrbgaab" path="res://Models/Textures/atlas1.png" id="2_8ha0m"]
+[ext_resource type="AudioStream" uid="uid://baqso04pefx4f" path="res://MusicAndSFX/SFX/grab/foley_object_grab_pickup_04.wav" id="4_qxtuc"]
+[ext_resource type="AudioStream" uid="uid://don7my6clfipc" path="res://MusicAndSFX/SFX/grab/foley_sports_bag_grab_pickup_catch_04.wav" id="5_xhxp2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u03aj"]
 radius = 0.056152344
@@ -10,6 +12,12 @@ height = 0.22955322
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxtuc"]
 albedo_texture = ExtResource("2_8ha0m")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_smw40"]
+random_pitch = 1.0293022
+streams_count = 2
+stream_0/stream = ExtResource("4_qxtuc")
+stream_1/stream = ExtResource("5_xhxp2")
 
 [node name="Water" type="StaticBody3D" unique_id=109674291 node_paths=PackedStringArray("item_mesh")]
 transform = Transform3D(-0.005248811, -0.10741284, 0.28006235, -0.0020127331, 0.28011152, 0.10739398, -0.2999473, 0, -0.005621487, 0, 0, 0)
@@ -26,3 +34,8 @@ shape = SubResource("CapsuleShape3D_u03aj")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_qxtuc")
 mesh = ExtResource("2_0qmjo")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=2144538744]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_smw40")
+bus = &"SFX"

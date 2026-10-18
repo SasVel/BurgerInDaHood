@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://br165gqvbv3lw" path="res://Components/item.gd" id="1_by14v"]
 [ext_resource type="Texture2D" uid="uid://b2cpr3wrbgaab" path="res://Models/Textures/atlas1.png" id="2_fb6mt"]
 [ext_resource type="ArrayMesh" uid="uid://bhnjiu303upkj" path="res://Models/Food/Hamburger.obj" id="2_osun5"]
+[ext_resource type="AudioStream" uid="uid://baqso04pefx4f" path="res://MusicAndSFX/SFX/grab/foley_object_grab_pickup_04.wav" id="4_hyv2g"]
+[ext_resource type="AudioStream" uid="uid://don7my6clfipc" path="res://MusicAndSFX/SFX/grab/foley_sports_bag_grab_pickup_catch_04.wav" id="5_ft8jp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pcic6"]
 radius = 0.046875
@@ -10,6 +12,12 @@ height = 0.123046875
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyv2g"]
 albedo_texture = ExtResource("2_fb6mt")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vvmcw"]
+random_pitch = 1.0293022
+streams_count = 2
+stream_0/stream = ExtResource("4_hyv2g")
+stream_1/stream = ExtResource("5_ft8jp")
 
 [node name="HamBurger" type="StaticBody3D" unique_id=1191479078 node_paths=PackedStringArray("item_mesh")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -26,3 +34,8 @@ shape = SubResource("CapsuleShape3D_pcic6")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_hyv2g")
 mesh = ExtResource("2_osun5")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=460929729]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_vvmcw")
+bus = &"SFX"

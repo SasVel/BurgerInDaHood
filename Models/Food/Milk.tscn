@@ -3,12 +3,20 @@
 [ext_resource type="Script" uid="uid://br165gqvbv3lw" path="res://Components/item.gd" id="1_lrmns"]
 [ext_resource type="ArrayMesh" uid="uid://bplacu4ewgwqo" path="res://Models/Food/Milk.obj" id="2_mycbj"]
 [ext_resource type="Texture2D" uid="uid://b2cpr3wrbgaab" path="res://Models/Textures/atlas1.png" id="2_qodid"]
+[ext_resource type="AudioStream" uid="uid://baqso04pefx4f" path="res://MusicAndSFX/SFX/grab/foley_object_grab_pickup_04.wav" id="4_mknnf"]
+[ext_resource type="AudioStream" uid="uid://don7my6clfipc" path="res://MusicAndSFX/SFX/grab/foley_sports_bag_grab_pickup_catch_04.wav" id="5_m8e1h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_epyww"]
 size = Vector3(0.090270996, 0.17285156, 0.09082031)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mknnf"]
 albedo_texture = ExtResource("2_qodid")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a7c7s"]
+random_pitch = 1.0293022
+streams_count = 2
+stream_0/stream = ExtResource("4_mknnf")
+stream_1/stream = ExtResource("5_m8e1h")
 
 [node name="MilkShake" type="StaticBody3D" unique_id=149774104 node_paths=PackedStringArray("item_mesh")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
@@ -25,3 +33,8 @@ shape = SubResource("BoxShape3D_epyww")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_mknnf")
 mesh = ExtResource("2_mycbj")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1024836534]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_a7c7s")
+bus = &"SFX"

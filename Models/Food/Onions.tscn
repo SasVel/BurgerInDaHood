@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://br165gqvbv3lw" path="res://Components/item.gd" id="1_f7muv"]
 [ext_resource type="Texture2D" uid="uid://ckj1yo4tmtldo" path="res://Models/Textures/fry-texture.jpg" id="2_smp1h"]
 [ext_resource type="Texture2D" uid="uid://c3862iyxlvks2" path="res://Models/Textures/Crust_1.jpg" id="3_vf3rq"]
+[ext_resource type="AudioStream" uid="uid://baqso04pefx4f" path="res://MusicAndSFX/SFX/grab/foley_object_grab_pickup_04.wav" id="4_ep62e"]
+[ext_resource type="AudioStream" uid="uid://don7my6clfipc" path="res://MusicAndSFX/SFX/grab/foley_sports_bag_grab_pickup_catch_04.wav" id="5_022dt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ok6jj"]
 size = Vector3(0.18157959, 0.061035156, 0.2680664)
@@ -72,6 +74,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qavxn")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3ionl"]
+random_pitch = 1.0293022
+streams_count = 2
+stream_0/stream = ExtResource("4_ep62e")
+stream_1/stream = ExtResource("5_022dt")
+
 [node name="OnionRings" type="StaticBody3D" unique_id=940356636 node_paths=PackedStringArray("item_mesh")]
 transform = Transform3D(-0.029440138, 0.058700744, 0.29272422, 0.005874074, 0.294201, -0.0584061, -0.29849404, 0, -0.03002044, 0, 0, 0)
 script = ExtResource("1_f7muv")
@@ -86,3 +94,8 @@ shape = SubResource("BoxShape3D_ok6jj")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1580718920]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ep62e")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=733915919]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_3ionl")
+bus = &"SFX"
