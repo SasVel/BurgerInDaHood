@@ -2,6 +2,7 @@ extends Node3D
 
 @export var customer_dialogue_box : Control
 @onready var helper_functions = %HelperFunctions
+@onready var red_effect: ColorRect = %RedEffect
 
 const MAX_REP = 100
 const ORDER_TIME = 60.0
@@ -144,7 +145,7 @@ func forced_death() -> void:
 	await get_tree().create_timer(1).timeout
 	update_customer_dialogue_simple("Your days are numbered")
 	%CustomerBonusAnims.play("pull_gun")
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(2).timeout
 	SceneTransition.change_scene("res://UI/GameOver.tscn")
 
 func spawn_next_customer() -> void:
@@ -154,7 +155,7 @@ func spawn_next_customer() -> void:
 		forced_death()
 		return
 	var reputation_percent = float(reputation) / MAX_REP
-	var evil_chance = max(1-reputation_percent,.25)
+	var evil_chance = min(max(1-reputation_percent,.25), 50)
 	if randf() < evil_chance:
 		is_evil = true
 		print("is evil")
@@ -249,6 +250,7 @@ func kill_customer() -> void:
 		return
 	if is_evil and has_pulled_gun:
 		reputation = reputation+2
+		red_effect.deactivate()
 	elif is_evil:
 		reputation = reputation-10
 	else:

@@ -4,11 +4,14 @@
 [ext_resource type="Script" uid="uid://csry0vkkvnt5c" path="res://Models/Customers/Man_01/customer.gd" id="2_juu05"]
 
 [node name="Man_042" unique_id=1560236560 node_paths=PackedStringArray("anim_player") instance=ExtResource("1_ycdeg")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-0.05368618, 0, -0.99855787, 0, 1, 0, 0.99855787, 0, -0.05368618, 0, 0, 0)
 script = ExtResource("2_juu05")
 anim_player = NodePath("AnimationPlayer")
 
-[node name="Skeleton3D" parent="Man_04" parent_id_path=PackedInt32Array(258045557) index="0" unique_id=354223519]
+[node name="Man_04" parent="." index="0" unique_id=390658187]
+transform = Transform3D(-0.061920747, 0.9980811, 0, 0, 0, -1, -0.9980811, -0.061920747, 0, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Man_04" index="0" unique_id=860670637]
 bones/0/position = Vector3(-0.008435035, 0.00096823624, -0.9028897)
 bones/0/rotation = Quaternion(-0.50016516, -0.5001548, 0.49983546, 0.4998445)
 bones/1/rotation = Quaternion(-0.0045465464, -0.103826836, 0.96950877, -0.22192812)
@@ -40,5 +43,5 @@ bones/30/rotation = Quaternion(0.05395053, 0.0048449594, -0.18311962, 0.98159724
 bones/31/rotation = Quaternion(0.24662398, 0.020705633, -0.060353503, 0.9670085)
 bones/32/rotation = Quaternion(-4.0308796e-09, 1, 1.1641682e-10, -1.994049e-07)
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=123753279]
+[node name="AnimationPlayer" parent="." index="1" unique_id=440116987]
 autoplay = &"idle"
