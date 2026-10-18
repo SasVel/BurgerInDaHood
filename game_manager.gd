@@ -136,6 +136,12 @@ func spawn_next_customer() -> void:
 	await tween.finished
 	if not day_running or not is_instance_valid(current_customer):
 		return
+	
+	update_customer_dialogue_simple(Const.StartSentArr.pick_random())
+	await get_tree().create_timer(2).timeout
+	order_info_arr = helper_functions.gen_order_dialog(current_order)
+	update_customer_dialogue(order_info_arr)
+	
 	customer_ready = true
 	order_time_left = ORDER_TIME
 	order_timer_running = true
@@ -162,6 +168,7 @@ func select_order_items(items_count):
 	return chosen_items
 	
 func progress_customer_order(item : Item):
+	var wrong_order = false
 	var all_orders_of_type = order_info_arr[1].filter(func(x): return x.type == item.type)
 	if current_order.has(item.type):
 		current_order.pop_at(current_order.find(item.type))
@@ -169,12 +176,16 @@ func progress_customer_order(item : Item):
 		if filtered_orders.size() > 0:
 			filtered_orders[0].completion = Const.OrderCompletions.Good
 	else:
+		wrong_order = true
 		var filtered_orders = order_info_arr[1].filter(func(x): return x.completion == Const.OrderCompletions.Neutral)
 		if filtered_orders.size() > 0:
 			filtered_orders[0].completion = Const.OrderCompletions.Bad
+	print(wrong_order)
 
 	update_customer_dialogue(order_info_arr)
-	if order_info_arr[1].all(func(x): return x.completion == Const.OrderCompletions.Bad):
+	#if order_info_arr[1].all(func(x): return x.completion == Const.OrderCompletions.Bad):
+	if wrong_order:
+		await get_tree().create_timer(.5).timeout
 		order_failed()
 		return
 
@@ -184,6 +195,8 @@ func progress_customer_order(item : Item):
 func complete_customer_order() -> void:
 	if not is_instance_valid(current_customer) or not customer_ready:
 		return
+	update_customer_dialogue_simple(Const.GoodEndingSentArr.pick_random())
+	await get_tree().create_timer(2).timeout
 	profits += 10
 	reputation = reputation + 2
 	await despawn_customer()
@@ -219,19 +232,22 @@ func order_failed():
 	if not customer_ready:
 		return
 	order_timer_running = false
+	customer_ready = false
+	update_customer_dialogue_simple(Const.BadEndingSentArr.pick_random())
+	await get_tree().create_timer(2).timeout
 	reputation = reputation - 10
 	await despawn_customer()
-	customer_ready = false
 	print("order failed")
 	spawn_next_customer()
 
 func show_customer_dialogue():
-	order_info_arr = helper_functions.gen_order_dialog(current_order)
-	update_customer_dialogue(order_info_arr)
 	customer_dialogue_box.fade_in()
 
-func update_customer_dialogue(gen_arr):
+func update_customer_dialogue(gen_arr: Array):
 	customer_dialogue_box.fill_text(gen_arr)
+
+func update_customer_dialogue_simple(txt: String):
+	customer_dialogue_box.fill_simple_text(txt)
 
 func hide_customer_dialogue():
 	customer_dialogue_box.visible = false

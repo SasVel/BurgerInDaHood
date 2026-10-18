@@ -14,5 +14,9 @@ func fill_text(gen_arr : Array):
 		txt = color_kw(txt, item_data.chosen_slang, Const.get_font_color(item_data.completion))
 	text = txt
 
+func fill_simple_text(val : String):
+	var txt = tags_text.replace("*", val)
+	text = txt
+
 func color_kw(input_str : String, kw : String, color : Color) -> String:
 	return input_str.replace(kw, ("[color=%s]" % color.to_html(false)) + kw + "[/color]")

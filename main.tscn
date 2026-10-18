@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://hlth0vgggdbi" path="res://Models/Shared/Hand_Character_02.png" id="3_dg77c"]
 [ext_resource type="PackedScene" uid="uid://gt05gwg4l8qp" path="res://Models/RegisterObjects/Desk.glb" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://dmbvwt2ig648k" path="res://UI/customer_dialogue_box.gd" id="3_yaehf"]
-[ext_resource type="PackedScene" uid="uid://bvj0uoghp02q3" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://d2f581pthg8av" path="res://Models/RegisterObjects/MeshWall.glb" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://d3ekpth3rfscc" path="res://label.gd" id="4_cegan"]
 [ext_resource type="Animation" uid="uid://bkh5ptus0lv6j" path="res://Models/Shared/HandAnimations/hand_idle.anim" id="4_dg77c"]
 [ext_resource type="Script" uid="uid://cftidvm2gvh4r" path="res://helper_functions.gd" id="5_efxa6"]
@@ -1454,7 +1454,6 @@ script = ExtResource("1_2cqfq")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=870435629]
 stream = ExtResource("2_xuqvo")
 autoplay = true
-bus = &"Music"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1972210199]
 environment = SubResource("Environment_7kkhm")
@@ -1658,14 +1657,14 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(0.059585154, 0.9981355, -0.0132314265, 0.951745, -0.052808285, 0.30231225, 0.3010499, -0.030606255, -0.95311713, -0.4740218, 0.80381286, 0.30589914)
 bones/0/enabled = true
 bones/0/position = Vector3(-0.4740218, 0.80381286, 0.30589914)
-bones/0/rotation = Quaternion(0.72433233, 0.4606774, 0.31174058, -0.4073534)
+bones/0/rotation = Quaternion(0.7159864, 0.4679075, 0.3059592, -0.41810903)
 bones/0/scale = Vector3(1, 0.99999994, 1)
 bones/1/name = "mixamorig_RightForeArm"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0.97153914, 0.2368427, -0.0041671097, -0.23687929, 0.97138906, -0.017092636, -3.5762787e-07, 0.017593268, 0.9998453, -1.1923711e-07, 0.25746587, 4.1770454e-09)
 bones/1/enabled = true
 bones/1/position = Vector3(-1.1923711e-07, 0.25746587, 4.1770454e-09)
-bones/1/rotation = Quaternion(0.3985909, -0.05100881, -0.06703182, 0.9132526)
+bones/1/rotation = Quaternion(0.3689529, -0.050787684, -0.06093717, 0.92605674)
 bones/1/scale = Vector3(1, 1.0000004, 1)
 bones/2/name = "mixamorig_RightHand"
 bones/2/parent = 1
@@ -1754,7 +1753,6 @@ stream = SubResource("AudioStreamRandomizer_7kkhm")
 volume_db = 15.094
 max_db = 6.0
 panning_strength = 2.0
-bus = &"SFX"
 
 [node name="Desk" parent="." unique_id=2026969727 instance=ExtResource("3_h2yge")]
 transform = Transform3D(0.32364088, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.004626155, -0.3859299, -0.25735572)

@@ -9,6 +9,10 @@ func fill_text(gen_arr : Array):
 	fade_in()
 	%Label.fill_text(gen_arr)
 
+func fill_simple_text(txt : String):
+	fade_in()
+	%Label.fill_simple_text(txt)
+
 func clear_text():
 	%Label.text = ""
 
