@@ -54,8 +54,7 @@ func _ready() -> void:
 	if(GameState.money >= 0):
 		next_day_button.visible = true
 	else:
-		#TODO GAME OVER
-		print("game over")
+		SceneTransition.change_scene("res://UI/GameOver.tscn")
 
 func reveal(node: Control) -> void:
 	var tween := create_tween()

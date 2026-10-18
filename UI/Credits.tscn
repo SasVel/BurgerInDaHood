@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cm4ln7wdib8um"]
 
+[ext_resource type="Script" uid="uid://dfxj62ccn1pmf" path="res://UI/credits.gd" id="1_nw1lt"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_h2o8h"]
 font_size = 128
 
@@ -10,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nw1lt")
 
 [node name="Panel" type="Panel" parent="." unique_id=2144325974]
 layout_mode = 1
@@ -17,6 +20,38 @@ anchors_preset = -1
 anchor_right = 0.99700004
 anchor_bottom = 1.0
 offset_right = 0.7598877
+
+[node name="Panel2" type="Panel" parent="Panel" unique_id=1650808424]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 46.5
+offset_top = 325.0
+offset_right = 561.5
+offset_bottom = 670.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Panel/Panel2" unique_id=1715103496]
+layout_mode = 1
+offset_left = 39.0
+offset_top = 27.0
+offset_right = 372.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 64
+text = "Assets"
+
+[node name="Label2" type="Label" parent="Panel/Panel2" unique_id=374439130]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 105.0
+offset_right = -32.0
+offset_bottom = -9.0
+theme_override_font_sizes/font_size = 32
+text = "Asset 1 - "
 
 [node name="Title" type="Label" parent="Panel" unique_id=714855927]
 unique_name_in_owner = true
@@ -34,19 +69,7 @@ label_settings = SubResource("LabelSettings_h2o8h")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Panel" unique_id=1162915534]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -201.5
-offset_top = 290.0
-offset_right = 10.0
-offset_bottom = 326.0
-grow_horizontal = 2
-text = "Developers"
-
-[node name="Play" type="Button" parent="Panel" unique_id=647075996]
+[node name="Back" type="Button" parent="Panel" unique_id=647075996]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
@@ -63,3 +86,85 @@ grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 32
 text = "Back"
+
+[node name="Panel" type="Panel" parent="Panel" unique_id=1923416546]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -553.5
+offset_top = 321.0
+offset_right = -139.5
+offset_bottom = 666.0
+grow_horizontal = 2
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Panel/Panel" unique_id=76100675]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -163.0
+offset_top = 262.0
+offset_right = 247.0
+offset_bottom = 306.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[color=orange]Mihail Dimitrov[/color]"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Panel/Panel" unique_id=1318203365]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -163.0
+offset_top = 172.0
+offset_right = 247.0
+offset_bottom = 216.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[color=green]Hristo Uzunov[/color]"
+
+[node name="Label" type="Label" parent="Panel/Panel" unique_id=1162915534]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -169.0
+offset_top = 40.0
+offset_right = 164.0
+offset_bottom = 109.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Developers"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/Panel" unique_id=878690222]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_top = 129.0
+offset_right = 246.0
+offset_bottom = 173.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[color=purple]Alina Blagoeva[/color]"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Panel/Panel" unique_id=808012430]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -163.0
+offset_top = 217.0
+offset_right = 247.0
+offset_bottom = 261.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[color=red]Alexander Velchev[/color]"
+
+[connection signal="pressed" from="Panel/Back" to="." method="_on_back_pressed"]
