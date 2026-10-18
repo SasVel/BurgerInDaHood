@@ -1735,14 +1735,14 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(0.059585154, 0.9981355, -0.0132314265, 0.951745, -0.052808285, 0.30231225, 0.3010499, -0.030606255, -0.95311713, -0.4740218, 0.80381286, 0.30589914)
 bones/0/enabled = true
 bones/0/position = Vector3(-0.4740218, 0.80381286, 0.30589914)
-bones/0/rotation = Quaternion(0.7618369, 0.4240382, 0.33844495, -0.3539085)
+bones/0/rotation = Quaternion(0.74256533, 0.44378567, 0.32456234, -0.3825053)
 bones/0/scale = Vector3(1, 0.99999994, 1)
 bones/1/name = "mixamorig_RightForeArm"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0.97153914, 0.2368427, -0.0041671097, -0.23687929, 0.97138906, -0.017092636, -3.5762787e-07, 0.017593268, 0.9998453, -1.1923711e-07, 0.25746587, 4.1770454e-09)
 bones/1/enabled = true
 bones/1/position = Vector3(-1.1923711e-07, 0.25746587, 4.1770454e-09)
-bones/1/rotation = Quaternion(0.53551406, -0.051297985, -0.095416054, 0.8375494)
+bones/1/rotation = Quaternion(0.46455207, -0.05130689, -0.0806562, 0.88037133)
 bones/1/scale = Vector3(1, 1.0000004, 1)
 bones/2/name = "mixamorig_RightHand"
 bones/2/parent = 1
@@ -1908,6 +1908,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23076539, -0.16796358, 0.12913424)
 
 [connection signal="finished" from="Musics" to="." method="_on_audio_stream_player_finished"]
+[connection signal="on_customer_not_ready" from="GameManager" to="GameManager" method="_on_on_customer_not_ready"]
 [connection signal="animation_finished" from="CustomerHitbox/CustomerBonusAnims" to="GameManager" method="_on_customer_bonus_anims_animation_finished"]
 
 [editable path="Item"]

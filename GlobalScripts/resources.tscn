@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://cjrcd0pgrpsoi"]
 
 [ext_resource type="Script" uid="uid://tmi4lne4q4ah" path="res://GlobalScripts/Resurces.gd" id="1_k804w"]
-[ext_resource type="PackedScene" uid="uid://c8ujtpitxyg67" path="res://Models/Customers/Man_01/Man_01.glb" id="2_vypnc"]
-[ext_resource type="PackedScene" uid="uid://dgg2qvbr484ab" path="res://Models/Customers/Man_02/Man_02.glb" id="3_mxjrh"]
-[ext_resource type="PackedScene" uid="uid://dli43vsesf45g" path="res://Models/Customers/Man_03/Man_03.glb" id="4_yk4pt"]
-[ext_resource type="PackedScene" uid="uid://dywqxtwc3s5o1" path="res://Models/Customers/Man_04/Man_04.glb" id="5_ypvbf"]
-[ext_resource type="PackedScene" uid="uid://dpuou47inrykx" path="res://Models/Customers/Man_05/Man_05.glb" id="6_vs06q"]
+[ext_resource type="PackedScene" uid="uid://5byfkhikchck" path="res://Models/Customers/Man_01/man_01.tscn" id="2_mxjrh"]
+[ext_resource type="PackedScene" uid="uid://nj25288g3k14" path="res://Models/Customers/Man_02/man_02.tscn" id="3_yk4pt"]
+[ext_resource type="PackedScene" uid="uid://c181ccgm0tntm" path="res://Models/Customers/Man_03/man_03.tscn" id="4_ypvbf"]
+[ext_resource type="PackedScene" uid="uid://hqxnb1qh2jyb" path="res://Models/Customers/Man_04/man_042.tscn" id="5_vs06q"]
+[ext_resource type="PackedScene" uid="uid://doy6navcjbv72" path="res://Models/Customers/Man_05/man_052.tscn" id="6_cm2f5"]
 
 [node name="Resources" type="Node" unique_id=595782671]
 script = ExtResource("1_k804w")
-customers = Array[PackedScene]([ExtResource("2_vypnc"), ExtResource("3_mxjrh"), ExtResource("4_yk4pt"), ExtResource("5_ypvbf"), ExtResource("6_vs06q")])
+customers = Array[PackedScene]([ExtResource("2_mxjrh"), ExtResource("3_yk4pt"), ExtResource("4_ypvbf"), ExtResource("5_vs06q"), ExtResource("6_cm2f5")])

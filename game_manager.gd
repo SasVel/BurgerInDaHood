@@ -31,10 +31,12 @@ var customer_ready: bool = false :
 	set(val):
 		if val:
 			show_customer_dialogue()
+			on_customer_ready.emit()
 		else:
 			hide_customer_dialogue()
+			on_customer_not_ready.emit()
 		customer_ready = val
-var current_customer: Node3D = null
+var current_customer: Customer = null
 var current_order: Array = []
 var order_info_arr : Array
 var is_evil: bool = false
@@ -44,6 +46,9 @@ var order_timer_running: bool = false
 
 signal max_rep_reached
 signal no_rep_reached
+
+signal on_customer_ready
+signal on_customer_not_ready
 
 func _ready() -> void:
 	print(Const.Items)
@@ -58,7 +63,11 @@ func _on_picked_up_item() -> void:
 		%CustomerBonusAnims.play("pull_gun")
 
 func _on_customer_bonus_anims_animation_finished(anim_name: StringName) -> void:
-	if anim_name == &"pull_gun" and customer_ready:
+	if !customer_ready:
+		%CustomerBonusAnims.play("RESET")
+		return
+
+	if anim_name == &"pull_gun":
 		%CustomerBonusAnims.play("shoot_gun")
 	elif anim_name == &"shoot_gun":
 		SceneTransition.change_scene("res://UI/GameOver.tscn")
@@ -203,6 +212,7 @@ func complete_customer_order() -> void:
 	if not is_instance_valid(current_customer) or not customer_ready:
 		return
 	update_customer_dialogue_simple(Const.GoodEndingSentArr.pick_random())
+	current_customer.anim_player.play(&"goodbye")
 	await get_tree().create_timer(2).timeout
 	profits += 10
 	reputation = reputation + 2
@@ -241,6 +251,7 @@ func order_failed():
 	order_timer_running = false
 	customer_ready = false
 	update_customer_dialogue_simple(Const.BadEndingSentArr.pick_random())
+	current_customer.anim_player.play(&"goodbye")
 	await get_tree().create_timer(2).timeout
 	reputation = reputation - 10
 	await despawn_customer()
@@ -265,3 +276,8 @@ func save_game_state():
 	GameState.day = day
 	GameState.reputation = reputation
 	GameState.profits = profits
+
+func _on_on_customer_not_ready() -> void:
+	if %CustomerBonusAnims.is_playing():
+		%CustomerBonusAnims.stop()
+		%CustomerBonusAnims.play("RESET")
