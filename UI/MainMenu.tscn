@@ -1,18 +1,28 @@
 [gd_scene format=3 uid="uid://diw3idhmeiccm"]
 
+[ext_resource type="Texture2D" uid="uid://df1gb26rd2om0" path="res://Models/RegisterObjects/MeshWall_brick_wall.jpg" id="1_obtq6"]
 [ext_resource type="Script" uid="uid://d28rgnvmriu0t" path="res://UI/main_menu.gd" id="1_uahxu"]
 [ext_resource type="AudioStream" uid="uid://cdkk3safeqnrg" path="res://MusicAndSFX/Music/Car Theft 101.ogg" id="2_b37jj"]
+[ext_resource type="Texture2D" uid="uid://dhhjp4sh7nsfj" path="res://Models/Decals/cobweb_1.png" id="4_t4ff4"]
+[ext_resource type="Texture2D" uid="uid://qjob6j8kospl" path="res://Models/Decals/poster_missing.png" id="5_w5vcv"]
+[ext_resource type="Texture2D" uid="uid://bxr3ei4rxednu" path="res://Models/Decals/crack_wall_1.png" id="6_d2d4f"]
+[ext_resource type="Shader" uid="uid://cxxov6lo0boox" path="res://Shaders/Vignette.gdshader" id="7_6vw7e"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_eiy7p"]
-font_size = 128
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7kkhm"]
 
-[node name="MainMenu" type="Control" unique_id=1953755933]
-layout_mode = 3
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qrfef"]
+shader = ExtResource("7_6vw7e")
+shader_parameter/vignette_intensity = 0.3
+shader_parameter/vignette_opacity = 0.194000009215
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="TextureRect" unique_id=1162667809]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_obtq6")
 script = ExtResource("1_uahxu")
 
 [node name="Musics" type="AudioStreamPlayer" parent="." unique_id=2044054961]
@@ -26,6 +36,103 @@ anchors_preset = -1
 anchor_right = 0.99700004
 anchor_bottom = 1.0
 offset_right = 0.7598877
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7kkhm")
+
+[node name="Decals" type="Control" parent="Panel" unique_id=1801966138]
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Decals" unique_id=217536790]
+layout_mode = 0
+offset_right = 212.0
+offset_bottom = 212.0
+texture = ExtResource("4_t4ff4")
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/Decals" unique_id=816965568]
+layout_mode = 0
+offset_left = 190.0
+offset_top = -21.000008
+offset_right = 402.0
+offset_bottom = 191.0
+rotation = 0.73036027
+texture = ExtResource("4_t4ff4")
+
+[node name="TextureRect3" type="TextureRect" parent="Panel/Decals" unique_id=354970689]
+layout_mode = 0
+offset_left = 1930.0
+offset_top = 1090.0
+offset_right = 2241.85
+offset_bottom = 1401.8502
+rotation = 3.0864933
+texture = ExtResource("4_t4ff4")
+
+[node name="TextureRect4" type="TextureRect" parent="Panel/Decals" unique_id=803926732]
+layout_mode = 0
+offset_left = 127.000015
+offset_top = 299.00003
+offset_right = 407.4853
+offset_bottom = 674.8324
+rotation = 6.1015663
+texture = ExtResource("5_w5vcv")
+
+[node name="TextureRect5" type="TextureRect" parent="Panel/Decals" unique_id=22895920]
+layout_mode = 0
+offset_left = 1536.0
+offset_top = -48.0
+offset_right = 1664.0
+offset_bottom = 16.0
+rotation = 6.1015663
+scale = Vector2(3.4890554, 3.4890554)
+texture = ExtResource("6_d2d4f")
+
+[node name="TextureRect6" type="TextureRect" parent="Panel/Decals" unique_id=1976145845]
+layout_mode = 0
+offset_left = 1713.9999
+offset_top = -66.00006
+offset_right = 1841.9999
+offset_bottom = -2.000061
+rotation = 6.639151
+scale = Vector2(3.4890554, 3.4890554)
+texture = ExtResource("6_d2d4f")
+
+[node name="TextureRect7" type="TextureRect" parent="Panel/Decals" unique_id=1206798738]
+layout_mode = 0
+offset_left = 1594.0001
+offset_top = 258.0
+offset_right = 1722.0001
+offset_bottom = 322.0
+rotation = 9.392665
+scale = Vector2(3.4890554, 3.4890554)
+texture = ExtResource("6_d2d4f")
+
+[node name="TextureRect8" type="TextureRect" parent="Panel/Decals" unique_id=462171086]
+layout_mode = 0
+offset_left = 1441.0
+offset_top = 1335.0
+offset_right = 1569.0
+offset_bottom = 1399.0
+rotation = 10.07739
+scale = Vector2(3.4890554, 3.4890554)
+texture = ExtResource("6_d2d4f")
+
+[node name="TextureRect9" type="TextureRect" parent="Panel/Decals" unique_id=186300763]
+layout_mode = 0
+offset_left = -207.99994
+offset_top = 1268.0001
+offset_right = -79.99994
+offset_bottom = 1332.0001
+rotation = 11.353926
+scale = Vector2(3.4890554, 3.4890554)
+texture = ExtResource("6_d2d4f")
+
+[node name="TextureRect10" type="TextureRect" parent="Panel/Decals" unique_id=1653670283]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 1041.0
+offset_right = 452.0
+offset_bottom = 1105.0
+rotation = 8.765579
+scale = Vector2(3.4890554, 3.4890554)
+texture = ExtResource("6_d2d4f")
 
 [node name="Exit" type="Button" parent="Panel" unique_id=1616836308]
 layout_mode = 1
@@ -41,19 +148,19 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 32
 text = "Exit"
 
-[node name="Title" type="Label" parent="Panel" unique_id=1868398877]
+[node name="Title" type="RichTextLabel" parent="Panel" unique_id=1635724540]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -570.5
+offset_left = -703.5
 offset_top = 94.0
-offset_right = 570.5
+offset_right = 703.5
 offset_bottom = 230.0
 grow_horizontal = 2
-text = "BURGER IN DA HOOD"
-label_settings = SubResource("LabelSettings_eiy7p")
+bbcode_enabled = true
+text = "[wave amp=35.0 freq=3.0 connected=1][outline_size=24][font_size=128]BURGERS IN DA HOOD[/font_size][/outline_size][/wave]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -86,6 +193,18 @@ grow_horizontal = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 32
 text = "Credits"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=855466010]
+material = SubResource("ShaderMaterial_qrfef")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="finished" from="Musics" to="." method="_on_musics_finished"]
 [connection signal="pressed" from="Panel/Exit" to="." method="_on_exit_pressed"]
